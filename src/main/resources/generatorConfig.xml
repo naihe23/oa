@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<!--使用之前无需新建po mapper 和resources下的mapper包-->
+
+
+<generatorConfiguration>
+
+    <!-- 引入mysql-connector-java-5.1.30.jar位置 （使用maven无需配置）-->
+    <!--<classPathEntry location="E:/maven/repository/mysql/mysql-connector-java/5.1.30/mysql-connector-java-5.1.30.jar" />-->
+
+
+    <!-- 是否去除自动生成的注释 true：是 ： false:否 如果不希望实体类生成Example查询有关的内容则把targetRuntime设置成MyBatis3Simple，默认为MyBatis3-->
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!-- 数据库连接 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/oa?useUnicode=true&amp;characterEncoding=UTF-8"
+                        userId="root" password="123">
+        </jdbcConnection>
+
+        <!--
+              默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer
+             true，把JDBC DECIMAL 和 NUMERIC 类型解析为java.math.BigDecimal
+        -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!--
+         生成model实体类模型，对应的包路径，以及文件存放路径(targetProject)，targetProject可以指定具体的路径
+      也可以使用“MAVEN”来自动生成，这样生成的代码会在target/generatord-source目录下
+     -->
+
+        <!--注意这个格式-->
+        <javaModelGenerator targetPackage="com.design.oa.model"
+                            targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <!-- 从数据库返回的值被清理前后的空格  -->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--对应的mapper.xml文件  -->
+        <sqlMapGenerator targetPackage="mapping"
+                         targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+
+        <!-- 对应的Mapper接口类文件 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.design.oa.dao"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--&lt;!&ndash; 生成那些表，tableName对应数据库表，domainObjectName对应实体类名 &ndash;&gt;-->
+        <!--<table tableName="james_user" domainObjectName="JamesUser" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false"-->
+        <!--&gt;-->
+        <!--</table>-->
+
+
+        <!--<table tableName="ann_read" domainObjectName="AnnRead" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false"-->
+        <!--&gt;-->
+        <!--</table>-->
+
+        <!--<table tableName="ann_type" domainObjectName="AnnType" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false"-->
+        <!--&gt;-->
+        <!--</table>-->
+        <!--<table tableName="announcement" domainObjectName="Announcement" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false"-->
+        <!--&gt;-->
+        <!--</table>-->
+        <!--<table tableName="attendance_admin" domainObjectName="AttendanceAdmin" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false"-->
+        <!--&gt;-->
+        <!--</table>-->
+        <table tableName="incoming" domainObjectName="Incoming" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false"
+        >
+        </table>
+
+
+        <!--<table tableName="contact" domainObjectName="Contact" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false"-->
+        <!--&gt;-->
+        <!--</table>-->
+        <!--<table tableName="department" domainObjectName="Department" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false"-->
+        <!--&gt;-->
+        <!--</table>-->
+        <!--<table tableName="email" domainObjectName="Email" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false"-->
+        <!--&gt;-->
+        <!--</table>-->
+        <!--<table tableName="emial_attachment" domainObjectName="EmialAttachment" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false"-->
+        <!--&gt;-->
+        <!--</table>-->
+        <!--<table tableName="incoming" domainObjectName="Incoming" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false"-->
+        <!--&gt;-->
+        <!--</table>-->
+        <!--<table tableName="leave_note" domainObjectName="LeaveNote" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false"-->
+        <!--&gt;-->
+        <!--</table>-->
+        <!--<table tableName="menu" domainObjectName="Menu" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false"-->
+        <!--&gt;-->
+        <!--</table>-->
+        <!--<table tableName="outgoing_message" domainObjectName="OutgoingMessage" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false"-->
+        <!--&gt;-->
+        <!--</table>-->
+        <!--<table tableName="role" domainObjectName="Role" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false"-->
+        <!--&gt;-->
+        <!--</table>-->
+        <!--<table tableName="role_menu" domainObjectName="RoleMenu" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false"-->
+        <!--&gt;-->
+        <!--</table>-->
+        <!--<table tableName="text" domainObjectName="Text" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false"-->
+        <!--&gt;-->
+        <!--</table>-->
+        <!--<table tableName="user" domainObjectName="User" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false"-->
+        <!--&gt;-->
+        <!--</table>-->
+        <!--<table tableName="user_role" domainObjectName="UserRole" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false"-->
+        <!--&gt;-->
+        <!--</table>-->
+        <!--<table tableName="workflow" domainObjectName="Workflow" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false"-->
+        <!--&gt;-->
+        <!--</table>-->
+    </context>
+</generatorConfiguration>

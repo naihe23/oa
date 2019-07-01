@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.design.oa.dao.AttendanceAdminMapper">
+  <resultMap id="BaseResultMap" type="com.design.oa.model.AttendanceAdmin">
+    <id column="att_admin_id" jdbcType="INTEGER" property="attAdminId" />
+    <result column="admin_id" jdbcType="INTEGER" property="adminId" />
+    <result column="att_admin_length" jdbcType="INTEGER" property="attAdminLength" />
+    <result column="att_admin_mor" jdbcType="TIMESTAMP" property="attAdminMor" />
+    <result column="att_admin_after" jdbcType="TIMESTAMP" property="attAdminAfter" />
+    <result column="att_admin_add" jdbcType="CHAR" property="attAdminAdd" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    att_admin_id, admin_id, att_admin_length, att_admin_mor, att_admin_after, att_admin_add
+  </sql>
+  <select id="selectWorkTime" resultType="java.sql.Time">
+    select att_admin_mor from attendance_admin
+  </select>
+  <select id="selectOffTime" resultType="java.sql.Time">
+    select att_admin_after from attendance_admin
+  </select>
+
+  <select id="selectAddress" resultType="java.lang.String">
+    select att_admin_add from attendance_admin
+  </select>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from attendance_admin
+    where att_admin_id = #{attAdminId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from attendance_admin
+    where att_admin_id = #{attAdminId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.design.oa.model.AttendanceAdmin">
+    insert into attendance_admin (att_admin_id, admin_id, att_admin_length, 
+      att_admin_mor, att_admin_after, att_admin_add
+      )
+    values (#{attAdminId,jdbcType=INTEGER}, #{adminId,jdbcType=INTEGER}, #{attAdminLength,jdbcType=INTEGER}, 
+      #{attAdminMor,jdbcType=TIMESTAMP}, #{attAdminAfter,jdbcType=TIMESTAMP}, #{attAdminAdd,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.design.oa.model.AttendanceAdmin">
+    insert into attendance_admin
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="attAdminId != null">
+        att_admin_id,
+      </if>
+      <if test="adminId != null">
+        admin_id,
+      </if>
+      <if test="attAdminLength != null">
+        att_admin_length,
+      </if>
+      <if test="attAdminMor != null">
+        att_admin_mor,
+      </if>
+      <if test="attAdminAfter != null">
+        att_admin_after,
+      </if>
+      <if test="attAdminAdd != null">
+        att_admin_add,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="attAdminId != null">
+        #{attAdminId,jdbcType=INTEGER},
+      </if>
+      <if test="adminId != null">
+        #{adminId,jdbcType=INTEGER},
+      </if>
+      <if test="attAdminLength != null">
+        #{attAdminLength,jdbcType=INTEGER},
+      </if>
+      <if test="attAdminMor != null">
+        #{attAdminMor,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attAdminAfter != null">
+        #{attAdminAfter,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attAdminAdd != null">
+        #{attAdminAdd,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.design.oa.model.AttendanceAdmin">
+    update attendance_admin
+    <set>
+      <if test="adminId != null">
+        admin_id = #{adminId,jdbcType=INTEGER},
+      </if>
+      <if test="attAdminLength != null">
+        att_admin_length = #{attAdminLength,jdbcType=INTEGER},
+      </if>
+      <if test="attAdminMor != null">
+        att_admin_mor = #{attAdminMor,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attAdminAfter != null">
+        att_admin_after = #{attAdminAfter,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attAdminAdd != null">
+        att_admin_add = #{attAdminAdd,jdbcType=CHAR},
+      </if>
+    </set>
+    where att_admin_id = #{attAdminId,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateSelective" parameterType="com.design.oa.model.AttendanceAdmin">
+    update attendance_admin
+    <set>
+      <if test="adminId != null">
+        admin_id = #{adminId,jdbcType=INTEGER},
+      </if>
+      <if test="attAdminLength != null">
+        att_admin_length = #{attAdminLength,jdbcType=INTEGER},
+      </if>
+      <if test="attAdminMor != null">
+        att_admin_mor = #{attAdminMor,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attAdminAfter != null">
+        att_admin_after = #{attAdminAfter,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attAdminAdd != null">
+        att_admin_add = #{attAdminAdd,jdbcType=CHAR},
+      </if>
+    </set>
+    where att_admin_id = 1
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.design.oa.model.AttendanceAdmin">
+    update attendance_admin
+    set admin_id = #{adminId,jdbcType=INTEGER},
+      att_admin_length = #{attAdminLength,jdbcType=INTEGER},
+      att_admin_mor = #{attAdminMor,jdbcType=TIMESTAMP},
+      att_admin_after = #{attAdminAfter,jdbcType=TIMESTAMP},
+      att_admin_add = #{attAdminAdd,jdbcType=CHAR}
+    where att_admin_id = #{attAdminId,jdbcType=INTEGER}
+  </update>
+</mapper>

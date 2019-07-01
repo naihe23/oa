@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.design.oa.dao.AnnDeparMapper">
+    <resultMap id="BaseResultMap" type="com.design.oa.model.AnnDeparKey">
+        <id column="ann_id" jdbcType="INTEGER" property="annId"/>
+        <id column="department_id" jdbcType="INTEGER" property="departmentId"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="com.design.oa.model.AnnDeparKey">
+    delete from ann_depar
+    where ann_id = #{annId,jdbcType=INTEGER}
+      and department_id = #{departmentId,jdbcType=INTEGER}
+  </delete>
+
+    <insert id="insertWithDepar">
+        insert into ann_depar (ann_id, department_id)
+        values
+        <foreach collection="department" item="item" separator=",">
+            (#{annId,jdbcType=INTEGER}, #{item,jdbcType=INTEGER})
+        </foreach>
+
+    </insert>
+
+    <insert id="insert" parameterType="com.design.oa.model.AnnDeparKey">
+    insert into ann_depar (ann_id, department_id)
+    values (#{annId,jdbcType=INTEGER}, #{departmentId,jdbcType=INTEGER})
+  </insert>
+    <insert id="insertSelective" parameterType="com.design.oa.model.AnnDeparKey">
+        insert into ann_depar
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="annId != null">
+                ann_id,
+            </if>
+            <if test="departmentId != null">
+                department_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="annId != null">
+                #{annId,jdbcType=INTEGER},
+            </if>
+            <if test="departmentId != null">
+                #{departmentId,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+</mapper>

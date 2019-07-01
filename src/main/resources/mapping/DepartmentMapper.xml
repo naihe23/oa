@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.design.oa.dao.DepartmentMapper">
+    <resultMap id="BaseResultMap" type="com.design.oa.model.Department">
+        <id column="department_id" jdbcType="INTEGER" property="departmentId"/>
+        <result column="department_supid" jdbcType="INTEGER" property="departmentSupid"/>
+        <result column="admin_id" jdbcType="INTEGER" property="adminId"/>
+        <result column="department_type" jdbcType="CHAR" property="departmentType"/>
+        <result column="department_name" jdbcType="CHAR" property="departmentName"/>
+        <result column="department_super_name" jdbcType="CHAR" property="departmentSuperName"/>
+        <result column="department_create_time" jdbcType="DATE" property="departmentCreateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    department_id, department_supid, admin_id, department_type, department_name, department_create_time
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from department
+        where department_id = #{departmentId,jdbcType=INTEGER}
+    </select>
+
+    <select id="getTreeDepartment" resultMap="BaseResultMap" parameterType="int">
+        SELECT department_id,department_name,department_supid FROM department WHERE department_supid=#{departmentId}
+    </select>
+
+    <select id="getAllDepartment" resultMap="BaseResultMap" parameterType="String">
+        select department1.*,department2.department_name department_super_name from department department1,department
+        department2
+        where 1 =1 and department1.department_supid = department2.department_id
+        <if test="departmentName != null">
+            and department1.department_name = #{departmentName}
+        </if>
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from department
+    where department_id = #{departmentId,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.design.oa.model.Department">
+    insert into department (department_id, department_supid, admin_id, 
+      department_type, department_name, department_create_time
+      )
+    values (#{departmentId,jdbcType=INTEGER}, #{departmentSupid,jdbcType=INTEGER}, #{adminId,jdbcType=INTEGER}, 
+      #{departmentType,jdbcType=CHAR}, #{departmentName,jdbcType=CHAR}, #{departmentCreateTime,jdbcType=DATE}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.design.oa.model.Department">
+        insert into department
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="departmentId != null">
+                department_id,
+            </if>
+            <if test="departmentSupid != null">
+                department_supid,
+            </if>
+            <if test="adminId != null">
+                admin_id,
+            </if>
+            <if test="departmentType != null">
+                department_type,
+            </if>
+            <if test="departmentName != null">
+                department_name,
+            </if>
+            <if test="departmentCreateTime != null">
+                department_create_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="departmentId != null">
+                #{departmentId,jdbcType=INTEGER},
+            </if>
+            <if test="departmentSupid != null">
+                #{departmentSupid,jdbcType=INTEGER},
+            </if>
+            <if test="adminId != null">
+                #{adminId,jdbcType=INTEGER},
+            </if>
+            <if test="departmentType != null">
+                #{departmentType,jdbcType=CHAR},
+            </if>
+            <if test="departmentName != null">
+                #{departmentName,jdbcType=CHAR},
+            </if>
+            <if test="departmentCreateTime != null">
+                #{departmentCreateTime,jdbcType=DATE},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.design.oa.model.Department">
+        update department
+        <set>
+            <if test="departmentSupid != null">
+                department_supid = #{departmentSupid,jdbcType=INTEGER},
+            </if>
+            <if test="adminId != null">
+                admin_id = #{adminId,jdbcType=INTEGER},
+            </if>
+            <if test="departmentType != null">
+                department_type = #{departmentType,jdbcType=CHAR},
+            </if>
+            <if test="departmentName != null">
+                department_name = #{departmentName,jdbcType=CHAR},
+            </if>
+            <if test="departmentCreateTime != null">
+                department_create_time = #{departmentCreateTime,jdbcType=DATE},
+            </if>
+        </set>
+        where department_id = #{departmentId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.design.oa.model.Department">
+    update department
+    set department_supid = #{departmentSupid,jdbcType=INTEGER},
+      admin_id = #{adminId,jdbcType=INTEGER},
+      department_type = #{departmentType,jdbcType=CHAR},
+      department_name = #{departmentName,jdbcType=CHAR},
+      department_create_time = #{departmentCreateTime,jdbcType=DATE}
+    where department_id = #{departmentId,jdbcType=INTEGER}
+  </update>
+</mapper>

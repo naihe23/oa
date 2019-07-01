@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.design.oa.dao.EmialAttachmentMapper">
+  <resultMap id="BaseResultMap" type="com.design.oa.model.EmialAttachment">
+    <id column="email_attachment_id" jdbcType="INTEGER" property="emailAttachmentId" />
+    <result column="email_id" jdbcType="INTEGER" property="emailId" />
+    <result column="email_attachment_name" jdbcType="CHAR" property="emailAttachmentName" />
+    <result column="email_attachment_url" jdbcType="CHAR" property="emailAttachmentUrl" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    email_attachment_id, email_id, email_attachment_name, email_attachment_url
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from emial_attachment
+    where email_attachment_id = #{emailAttachmentId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from emial_attachment
+    where email_attachment_id = #{emailAttachmentId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.design.oa.model.EmialAttachment">
+    insert into emial_attachment (email_attachment_id, email_id, email_attachment_name, 
+      email_attachment_url)
+    values (#{emailAttachmentId,jdbcType=INTEGER}, #{emailId,jdbcType=INTEGER}, #{emailAttachmentName,jdbcType=CHAR}, 
+      #{emailAttachmentUrl,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.design.oa.model.EmialAttachment">
+    insert into emial_attachment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="emailAttachmentId != null">
+        email_attachment_id,
+      </if>
+      <if test="emailId != null">
+        email_id,
+      </if>
+      <if test="emailAttachmentName != null">
+        email_attachment_name,
+      </if>
+      <if test="emailAttachmentUrl != null">
+        email_attachment_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="emailAttachmentId != null">
+        #{emailAttachmentId,jdbcType=INTEGER},
+      </if>
+      <if test="emailId != null">
+        #{emailId,jdbcType=INTEGER},
+      </if>
+      <if test="emailAttachmentName != null">
+        #{emailAttachmentName,jdbcType=CHAR},
+      </if>
+      <if test="emailAttachmentUrl != null">
+        #{emailAttachmentUrl,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.design.oa.model.EmialAttachment">
+    update emial_attachment
+    <set>
+      <if test="emailId != null">
+        email_id = #{emailId,jdbcType=INTEGER},
+      </if>
+      <if test="emailAttachmentName != null">
+        email_attachment_name = #{emailAttachmentName,jdbcType=CHAR},
+      </if>
+      <if test="emailAttachmentUrl != null">
+        email_attachment_url = #{emailAttachmentUrl,jdbcType=CHAR},
+      </if>
+    </set>
+    where email_attachment_id = #{emailAttachmentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.design.oa.model.EmialAttachment">
+    update emial_attachment
+    set email_id = #{emailId,jdbcType=INTEGER},
+      email_attachment_name = #{emailAttachmentName,jdbcType=CHAR},
+      email_attachment_url = #{emailAttachmentUrl,jdbcType=CHAR}
+    where email_attachment_id = #{emailAttachmentId,jdbcType=INTEGER}
+  </update>
+</mapper>

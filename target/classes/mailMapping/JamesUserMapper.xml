@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.design.oa.mailDao.JamesUserMapper">
+  <resultMap id="BaseResultMap" type="com.design.oa.mailModel.JamesUser">
+    <id column="USER_NAME" jdbcType="VARCHAR" property="userName" />
+    <result column="PASSWORD_HASH_ALGORITHM" jdbcType="VARCHAR" property="passwordHashAlgorithm" />
+    <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    USER_NAME, PASSWORD_HASH_ALGORITHM, PASSWORD, version
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from james_user
+    where USER_NAME = #{userName,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from james_user
+    where USER_NAME = #{userName,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.design.oa.mailModel.JamesUser">
+    insert into james_user (USER_NAME, PASSWORD_HASH_ALGORITHM, 
+      PASSWORD, version)
+    values (#{userName,jdbcType=VARCHAR}, #{passwordHashAlgorithm,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.design.oa.mailModel.JamesUser">
+    insert into james_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userName != null">
+        USER_NAME,
+      </if>
+      <if test="passwordHashAlgorithm != null">
+        PASSWORD_HASH_ALGORITHM,
+      </if>
+      <if test="password != null">
+        PASSWORD,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="passwordHashAlgorithm != null">
+        #{passwordHashAlgorithm,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.design.oa.mailModel.JamesUser">
+    update james_user
+    <set>
+      <if test="passwordHashAlgorithm != null">
+        PASSWORD_HASH_ALGORITHM = #{passwordHashAlgorithm,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+    </set>
+    where USER_NAME = #{userName,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.design.oa.mailModel.JamesUser">
+    update james_user
+    set PASSWORD_HASH_ALGORITHM = #{passwordHashAlgorithm,jdbcType=VARCHAR},
+      PASSWORD = #{password,jdbcType=VARCHAR},
+      version = #{version,jdbcType=INTEGER}
+    where USER_NAME = #{userName,jdbcType=VARCHAR}
+  </update>
+</mapper>

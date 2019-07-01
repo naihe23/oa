@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.design.oa.dao.LeaveNoteMapper">
+  <resultMap id="BaseResultMap" type="com.design.oa.model.LeaveNote">
+    <id column="leave_note_id" jdbcType="INTEGER" property="leaveNoteId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="leave_start_time" jdbcType="TIMESTAMP" property="leaveStartTime" />
+    <result column="leave_end_time" jdbcType="TIMESTAMP" property="leaveEndTime" />
+    <result column="leave_reason" jdbcType="CHAR" property="leaveReason" />
+    <result column="leave_cancle_time" jdbcType="TIMESTAMP" property="leaveCancleTime" />
+    <result column="leave_cancle_sign" jdbcType="INTEGER" property="leaveCancleSign" />
+    <result column="leave_type" jdbcType="CHAR" property="leaveType" />
+    <result column="leave_user_department" jdbcType="CHAR" property="leaveUserDepartment" />
+    <result column="proIns_id" jdbcType="VARCHAR" property="proinsId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    leave_note_id, user_id, leave_start_time, leave_end_time, leave_reason, leave_cancle_time, 
+    leave_cancle_sign, leave_type, leave_user_department, proIns_id
+  </sql>
+
+  <select id="selectByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from leave_note
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    leave_note.*,user.user_name as userName
+    from leave_note,user
+    where leave_note.user_id = user.user_id and leave_note_id = #{leaveNoteId,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectLeaveNote" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    leave_note.*,user.user_name as userName
+    from leave_note,user
+    where leave_note.user_id = user.user_id and leave_note_id = #{leaveNoteId,jdbcType=INTEGER}
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from leave_note
+    where leave_note_id = #{leaveNoteId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.design.oa.model.LeaveNote">
+    insert into leave_note (leave_note_id, user_id, leave_start_time, 
+      leave_end_time, leave_reason, leave_cancle_time, 
+      leave_cancle_sign, leave_type, leave_user_department, 
+      proIns_id)
+    values (#{leaveNoteId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{leaveStartTime,jdbcType=TIMESTAMP}, 
+      #{leaveEndTime,jdbcType=TIMESTAMP}, #{leaveReason,jdbcType=CHAR}, #{leaveCancleTime,jdbcType=TIMESTAMP}, 
+      #{leaveCancleSign,jdbcType=INTEGER}, #{leaveType,jdbcType=CHAR}, #{leaveUserDepartment,jdbcType=CHAR}, 
+      #{proinsId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.design.oa.model.LeaveNote" useGeneratedKeys="true" keyProperty="leaveNoteId">
+    insert into leave_note
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="leaveNoteId != null">
+        leave_note_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="leaveStartTime != null">
+        leave_start_time,
+      </if>
+      <if test="leaveEndTime != null">
+        leave_end_time,
+      </if>
+      <if test="leaveReason != null">
+        leave_reason,
+      </if>
+      <if test="leaveCancleTime != null">
+        leave_cancle_time,
+      </if>
+      <if test="leaveCancleSign != null">
+        leave_cancle_sign,
+      </if>
+      <if test="leaveType != null">
+        leave_type,
+      </if>
+      <if test="leaveUserDepartment != null">
+        leave_user_department,
+      </if>
+      <if test="proinsId != null">
+        proIns_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="leaveNoteId != null">
+        #{leaveNoteId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="leaveStartTime != null">
+        #{leaveStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leaveEndTime != null">
+        #{leaveEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leaveReason != null">
+        #{leaveReason,jdbcType=CHAR},
+      </if>
+      <if test="leaveCancleTime != null">
+        #{leaveCancleTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leaveCancleSign != null">
+        #{leaveCancleSign,jdbcType=INTEGER},
+      </if>
+      <if test="leaveType != null">
+        #{leaveType,jdbcType=CHAR},
+      </if>
+      <if test="leaveUserDepartment != null">
+        #{leaveUserDepartment,jdbcType=CHAR},
+      </if>
+      <if test="proinsId != null">
+        #{proinsId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.design.oa.model.LeaveNote">
+    update leave_note
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="leaveStartTime != null">
+        leave_start_time = #{leaveStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leaveEndTime != null">
+        leave_end_time = #{leaveEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leaveReason != null">
+        leave_reason = #{leaveReason,jdbcType=CHAR},
+      </if>
+      <if test="leaveCancleTime != null">
+        leave_cancle_time = #{leaveCancleTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leaveCancleSign != null">
+        leave_cancle_sign = #{leaveCancleSign,jdbcType=INTEGER},
+      </if>
+      <if test="leaveType != null">
+        leave_type = #{leaveType,jdbcType=CHAR},
+      </if>
+      <if test="leaveUserDepartment != null">
+        leave_user_department = #{leaveUserDepartment,jdbcType=CHAR},
+      </if>
+      <if test="proinsId != null">
+        proIns_id = #{proinsId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where leave_note_id = #{leaveNoteId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.design.oa.model.LeaveNote">
+    update leave_note
+    set user_id = #{userId,jdbcType=INTEGER},
+      leave_start_time = #{leaveStartTime,jdbcType=TIMESTAMP},
+      leave_end_time = #{leaveEndTime,jdbcType=TIMESTAMP},
+      leave_reason = #{leaveReason,jdbcType=CHAR},
+      leave_cancle_time = #{leaveCancleTime,jdbcType=TIMESTAMP},
+      leave_cancle_sign = #{leaveCancleSign,jdbcType=INTEGER},
+      leave_type = #{leaveType,jdbcType=CHAR},
+      leave_user_department = #{leaveUserDepartment,jdbcType=CHAR},
+      proIns_id = #{proinsId,jdbcType=VARCHAR}
+    where leave_note_id = #{leaveNoteId,jdbcType=INTEGER}
+  </update>
+</mapper>

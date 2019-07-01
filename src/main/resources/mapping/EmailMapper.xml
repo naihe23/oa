@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.design.oa.dao.EmailMapper">
+  <resultMap id="BaseResultMap" type="com.design.oa.model.Email">
+    <id column="email_id" jdbcType="INTEGER" property="emailId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="email_sender" jdbcType="CHAR" property="emailSender" />
+    <result column="email_recipients" jdbcType="CHAR" property="emailRecipients" />
+    <result column="email_send_time" jdbcType="TIMESTAMP" property="emailSendTime" />
+    <result column="email_theme" jdbcType="CHAR" property="emailTheme" />
+    <result column="email_state" jdbcType="INTEGER" property="emailState" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.design.oa.model.Email">
+    <result column="email_content" jdbcType="LONGVARCHAR" property="emailContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    email_id, user_id, email_sender, email_recipients, email_send_time, email_theme, 
+    email_state
+  </sql>
+  <sql id="Blob_Column_List">
+    email_content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from email
+    where email_id = #{emailId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from email
+    where email_id = #{emailId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.design.oa.model.Email">
+    insert into email (email_id, user_id, email_sender, 
+      email_recipients, email_send_time, email_theme, 
+      email_state, email_content)
+    values (#{emailId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{emailSender,jdbcType=CHAR}, 
+      #{emailRecipients,jdbcType=CHAR}, #{emailSendTime,jdbcType=TIMESTAMP}, #{emailTheme,jdbcType=CHAR}, 
+      #{emailState,jdbcType=INTEGER}, #{emailContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.design.oa.model.Email">
+    insert into email
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="emailId != null">
+        email_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="emailSender != null">
+        email_sender,
+      </if>
+      <if test="emailRecipients != null">
+        email_recipients,
+      </if>
+      <if test="emailSendTime != null">
+        email_send_time,
+      </if>
+      <if test="emailTheme != null">
+        email_theme,
+      </if>
+      <if test="emailState != null">
+        email_state,
+      </if>
+      <if test="emailContent != null">
+        email_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="emailId != null">
+        #{emailId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="emailSender != null">
+        #{emailSender,jdbcType=CHAR},
+      </if>
+      <if test="emailRecipients != null">
+        #{emailRecipients,jdbcType=CHAR},
+      </if>
+      <if test="emailSendTime != null">
+        #{emailSendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="emailTheme != null">
+        #{emailTheme,jdbcType=CHAR},
+      </if>
+      <if test="emailState != null">
+        #{emailState,jdbcType=INTEGER},
+      </if>
+      <if test="emailContent != null">
+        #{emailContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.design.oa.model.Email">
+    update email
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="emailSender != null">
+        email_sender = #{emailSender,jdbcType=CHAR},
+      </if>
+      <if test="emailRecipients != null">
+        email_recipients = #{emailRecipients,jdbcType=CHAR},
+      </if>
+      <if test="emailSendTime != null">
+        email_send_time = #{emailSendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="emailTheme != null">
+        email_theme = #{emailTheme,jdbcType=CHAR},
+      </if>
+      <if test="emailState != null">
+        email_state = #{emailState,jdbcType=INTEGER},
+      </if>
+      <if test="emailContent != null">
+        email_content = #{emailContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where email_id = #{emailId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.design.oa.model.Email">
+    update email
+    set user_id = #{userId,jdbcType=INTEGER},
+      email_sender = #{emailSender,jdbcType=CHAR},
+      email_recipients = #{emailRecipients,jdbcType=CHAR},
+      email_send_time = #{emailSendTime,jdbcType=TIMESTAMP},
+      email_theme = #{emailTheme,jdbcType=CHAR},
+      email_state = #{emailState,jdbcType=INTEGER},
+      email_content = #{emailContent,jdbcType=LONGVARCHAR}
+    where email_id = #{emailId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.design.oa.model.Email">
+    update email
+    set user_id = #{userId,jdbcType=INTEGER},
+      email_sender = #{emailSender,jdbcType=CHAR},
+      email_recipients = #{emailRecipients,jdbcType=CHAR},
+      email_send_time = #{emailSendTime,jdbcType=TIMESTAMP},
+      email_theme = #{emailTheme,jdbcType=CHAR},
+      email_state = #{emailState,jdbcType=INTEGER}
+    where email_id = #{emailId,jdbcType=INTEGER}
+  </update>
+</mapper>

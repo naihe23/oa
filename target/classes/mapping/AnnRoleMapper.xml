@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.design.oa.dao.AnnRoleMapper">
+    <resultMap id="BaseResultMap" type="com.design.oa.model.AnnRoleKey">
+        <id column="ann_id" jdbcType="INTEGER" property="annId"/>
+        <id column="role_id" jdbcType="INTEGER" property="roleId"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="com.design.oa.model.AnnRoleKey">
+    delete from ann_role
+    where ann_id = #{annId,jdbcType=INTEGER}
+      and role_id = #{roleId,jdbcType=INTEGER}
+  </delete>
+
+    <insert id="insertWithRole" parameterType="com.design.oa.model.AnnRoleKey">
+        insert into ann_role (ann_id, role_id)
+        values
+        <foreach collection="role" item="item" separator=",">
+            (#{annId,jdbcType=INTEGER}, #{item,jdbcType=INTEGER})
+        </foreach>
+    </insert>
+
+    <insert id="insert" parameterType="com.design.oa.model.AnnRoleKey">
+    insert into ann_role (ann_id, role_id)
+    values (#{annId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER})
+  </insert>
+    <insert id="insertSelective" parameterType="com.design.oa.model.AnnRoleKey">
+        insert into ann_role
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="annId != null">
+                ann_id,
+            </if>
+            <if test="roleId != null">
+                role_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="annId != null">
+                #{annId,jdbcType=INTEGER},
+            </if>
+            <if test="roleId != null">
+                #{roleId,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+</mapper>

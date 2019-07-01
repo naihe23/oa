@@ -1,0 +1,1213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="GROUP_BY_SEVERITY" value="true" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="72de4e90-822d-4b29-8ba2-3af00ca97a31" name="Default Changelist" comment="" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/controller/AdminController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1156">
+              <caret line="85" column="41" selection-start-line="85" selection-start-column="41" selection-end-line="85" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" column="20" lean-forward="true" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit4 Test Class" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>keyName</find>
+      <find>insertSelective</find>
+      <find>processInstanceId</find>
+      <find>page</find>
+      <find>pageInfo</find>
+      <find>PageInfo</find>
+      <find>startListener</find>
+      <find>测试开始监听</find>
+      <find>测试结束</find>
+      <find>attenservice</find>
+      <find>attenService</find>
+      <find>attenServiceImp</find>
+      <find>attenServ</find>
+      <find>tesststt</find>
+      <find>destinationTaskID</find>
+      <find>selectByPrimaryKey</find>
+      <find>update</find>
+      <find>insert</find>
+      <find>log4</find>
+      <find>Reject</find>
+      <find>RejectTaskCMD</find>
+      <find>taskName</find>
+      <find>historicActivityInstanceName</find>
+      <find>employeeId</find>
+      <find>task1</find>
+      <find>task</find>
+      <find>经理审批</find>
+      <find>task:经理审批</find>
+      <find>selectType</find>
+      <find>selectedKeys</find>
+    </findStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/activiti/vo/MyProcessDefinition.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/activiti/vo/DeploymentResponse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/OaApplication.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/activiti/config/MyExecutionListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/activiti/config/RejectTaskCMD.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/activiti/config/ProcessConstant.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/activiti/vo/MyHistoricActivityInstance.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/service/AttenService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/service/impl/LeaveNoteServiceImp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/service/LeaveNoteService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/activiti/vo/MyHistoricTaskInstance.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/activiti/config/MyAnnListener.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapping/AnnouncementMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/service/AnnService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/service/impl/AnnServiceImp.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapping/TextMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/dao/TextMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/activiti/controller/DeploymentController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapping/AdminMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/dao/AdminMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/model/OutgoingMessageDepl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/activiti/config/MyDocListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/activiti/config/MyStartDocListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/dao/OutgoingMessageMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapping/OutgoingMessageMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/activiti/controller/ProcessController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/activiti/config/MyEndIncListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/model/LeaveNote.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/model/OutgoingMessage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/activiti/vo/MyTask.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/activiti/controller/ControllerDe.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/model/Incoming.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/model/Announcement.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/dao/IncomingMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapping/IncomingMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/controller/AnnController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/controller/AttenController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/controller/DocumentController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/activiti/config/Reject.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/service/impl/AttenServiceImp.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/editor-app/configuration/properties-assignment-controller.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/service/DocumentService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/activiti/controller/TaskController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/dao/UserMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapping/UserMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/service/impl/DocumentServiceImp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/shiro/ShiroConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/activiti/controller/ModelerController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/shiro/CustomDefaultWebSessionManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/design/oa/controller/AdminController.java" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="F:\html5\maven\repository" />
+        <option name="mavenHome" value="G:/html5/maven/apache-maven-3.5.4" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="oa" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="635" />
+    <option name="y" value="18" />
+    <option name="width" value="727" />
+    <option name="height" value="688" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="oa" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oa" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oa" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oa" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561907432948" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/毕设/uml/权限管理类图.png" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.design.oa.service.impl" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\idea\oa\src\main\resources" />
+      <recent name="F:\idea\oa\src\main\resources\static" />
+      <recent name="F:\idea\oa\src\main\resources\templates" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.design.oa.activiti.config" />
+      <recent name="com.design.oa.activiti.vo" />
+      <recent name="com.design.oa.activiti.rest.editor.main" />
+      <recent name="org.activiti.rest.editor.model" />
+      <recent name="com.design.oa.utils" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\idea\oa\src\main\resources\static" />
+      <recent name="F:\idea\oa\src\main\resources" />
+      <recent name="F:\idea\oa\src\main\java\com\design\oa" />
+      <recent name="F:\idea\oa\src\main\java" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.design.oa.service" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.OaApplication">
+    <configuration name="EncryPassword" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.design.oa.utils.EncryPassword" />
+      <module name="oa" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.design.oa.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OaApplicationTests.mail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="oa" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.design.oa.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.design.oa" />
+      <option name="MAIN_CLASS_NAME" value="com.design.oa.OaApplicationTests" />
+      <option name="METHOD_NAME" value="mail" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OaApplicationTests.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="oa" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.design.oa.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.design.oa" />
+      <option name="MAIN_CLASS_NAME" value="com.design.oa.OaApplicationTests" />
+      <option name="METHOD_NAME" value="test1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OaApplicationTests.test2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="oa" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.design.oa.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.design.oa" />
+      <option name="MAIN_CLASS_NAME" value="com.design.oa.OaApplicationTests" />
+      <option name="METHOD_NAME" value="test2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OaApplicationTests.test3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="oa" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.design.oa.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.design.oa" />
+      <option name="MAIN_CLASS_NAME" value="com.design.oa.OaApplicationTests" />
+      <option name="METHOD_NAME" value="test3" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="mybatis-generator" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="mybatis-generator:generate" />
+                <option value="-e" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="OaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="oa" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.design.oa.OaApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.EncryPassword" />
+      <item itemvalue="JUnit.OaApplicationTests.mail" />
+      <item itemvalue="JUnit.OaApplicationTests.test1" />
+      <item itemvalue="JUnit.OaApplicationTests.test2" />
+      <item itemvalue="JUnit.OaApplicationTests.test3" />
+      <item itemvalue="Maven.mybatis-generator" />
+      <item itemvalue="Spring Boot.OaApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.OaApplicationTests.mail" />
+        <item itemvalue="JUnit.OaApplicationTests.test3" />
+        <item itemvalue="JUnit.OaApplicationTests.test2" />
+        <item itemvalue="JUnit.OaApplicationTests.test1" />
+        <item itemvalue="Application.EncryPassword" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="72de4e90-822d-4b29-8ba2-3af00ca97a31" name="Default Changelist" comment="" />
+      <created>1553261941903</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1553261941903</updated>
+      <workItem from="1553261945235" duration="11905000" />
+      <workItem from="1553352649185" duration="113621000" />
+      <workItem from="1553828377635" duration="30236000" />
+      <workItem from="1554086285742" duration="71344000" />
+      <workItem from="1554302215168" duration="2514000" />
+      <workItem from="1554351945830" duration="7363000" />
+      <workItem from="1554532651976" duration="99372000" />
+      <workItem from="1555033633921" duration="60931000" />
+      <workItem from="1555289289190" duration="25347000" />
+      <workItem from="1555380903754" duration="32111000" />
+      <workItem from="1555491931118" duration="6692000" />
+      <workItem from="1555548797464" duration="19967000" />
+      <workItem from="1555639946454" duration="13945000" />
+      <workItem from="1555721839088" duration="131968000" />
+      <workItem from="1556353603309" duration="153125000" />
+      <workItem from="1556944462032" duration="475000" />
+      <workItem from="1556944991936" duration="35000" />
+      <workItem from="1556945073100" duration="187000" />
+      <workItem from="1556945305260" duration="1583000" />
+      <workItem from="1556966349529" duration="86510000" />
+      <workItem from="1557282750508" duration="19940000" />
+      <workItem from="1557454220294" duration="33161000" />
+      <workItem from="1557757439573" duration="472000" />
+      <workItem from="1557818436269" duration="94000" />
+      <workItem from="1557824010695" duration="280000" />
+      <workItem from="1557890867748" duration="9639000" />
+      <workItem from="1558147181951" duration="1181000" />
+      <workItem from="1558241996701" duration="6828000" />
+      <workItem from="1558325090965" duration="119000" />
+      <workItem from="1558325250465" duration="15892000" />
+      <workItem from="1558767152223" duration="11286000" />
+      <workItem from="1559020735735" duration="161000" />
+      <workItem from="1559021004607" duration="2576000" />
+      <workItem from="1559440056823" duration="3022000" />
+      <workItem from="1559490545633" duration="3063000" />
+      <workItem from="1559624038915" duration="2035000" />
+      <workItem from="1559639806891" duration="1383000" />
+      <workItem from="1560071427456" duration="4717000" />
+      <workItem from="1560096686065" duration="148000" />
+      <workItem from="1560228805615" duration="3531000" />
+      <workItem from="1560913322640" duration="87000" />
+      <workItem from="1561174125089" duration="641000" />
+      <workItem from="1561907087899" duration="470000" />
+      <workItem from="1561945116908" duration="88000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="OaApplicationTests_test3 - 2019.04.16 at 21h 06m 40s.xml">
+      <configuration name="OaApplicationTests.test3" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OaApplicationTests_test3 - 2019.04.16 at 21h 09m 14s.xml">
+      <configuration name="OaApplicationTests.test3" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OaApplicationTests_test3 - 2019.04.16 at 21h 10m 04s.xml">
+      <configuration name="OaApplicationTests.test3" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OaApplicationTests_mail - 2019.04.24 at 17h 38m 13s.xml">
+      <configuration name="OaApplicationTests.mail" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OaApplicationTests_mail - 2019.04.24 at 17h 38m 56s.xml">
+      <configuration name="OaApplicationTests.mail" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OaApplicationTests_mail - 2019.04.24 at 17h 39m 33s.xml">
+      <configuration name="OaApplicationTests.mail" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OaApplicationTests_mail - 2019.04.24 at 17h 45m 26s.xml">
+      <configuration name="OaApplicationTests.mail" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OaApplicationTests_mail - 2019.04.24 at 17h 47m 03s.xml">
+      <configuration name="OaApplicationTests.mail" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OaApplicationTests_mail - 2019.04.24 at 19h 59m 43s.xml">
+      <configuration name="OaApplicationTests.mail" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OaApplicationTests_mail - 2019.04.24 at 20h 01m 16s.xml">
+      <configuration name="OaApplicationTests.mail" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="990045000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3237519" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49621785" weight="0.31914893" />
+      <window_info anchor="bottom" id="Spring" order="3" sideWeight="0.49924356" weight="0.3289689" />
+      <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.4969743" weight="0.4599018" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" weight="0.3289689" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.27168575" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50378215" side_tool="true" weight="0.3878887" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49924356" weight="0.2749591" />
+      <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.3289689" />
+      <window_info anchor="bottom" id="Database Changes" order="13" />
+      <window_info anchor="bottom" id="Version Control" order="14" />
+      <window_info anchor="bottom" id="Duplicate detector" order="15" weight="0.3289689" />
+      <window_info anchor="bottom" id="Inspection Results" order="16" weight="0.3289689" />
+      <window_info anchor="bottom" id="Sequence" order="17" weight="0.7495908" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Bean Validation" order="1" weight="0.32980332" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.24962178" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="4" weight="0.32980332" />
+      <window_info anchor="right" id="Palette" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Database" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Theme Preview" order="9" />
+      <window_info anchor="right" id="RestServices" order="10" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/design/oa/activiti/config/MyDocListener.java</url>
+          <line>32</line>
+          <properties />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="historicCurrentTaskInstance" />
+        <watch expression="processDefinitionActivities.get(2)" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/service/impl/AdminServiceImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="58" column="15" selection-start-line="58" selection-start-column="15" selection-end-line="58" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/service/impl/UserServiceImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="43" column="19" selection-start-line="43" selection-start-column="19" selection-end-line="43" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/com.design.oa.activiti.controller.ModelerController">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>com.design.oa.activiti.controller.ModelerController</OriginalElement>
+          <nodes>
+            <node x="265.0" y="81.0">org.springframework.web.bind.annotation.RequestMapping</node>
+            <node x="0.0" y="104.0">com.design.oa.common.RestServiceController</node>
+            <node x="509.0" y="161.5">org.springframework.web.bind.annotation.RestController</node>
+            <node x="166.50000000000006" y="346.0">com.design.oa.activiti.controller.ModelerController</node>
+            <node x="65.5" y="0.0">java.io.Serializable</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="com.design.oa.activiti.controller.ModelerController" target="org.springframework.web.bind.annotation.RestController">
+              <point x="140.33333333333331" y="-154.0" />
+              <point x="517.3333333333334" y="321.0" />
+              <point x="580.0" y="321.0" />
+              <point x="0.0" y="27.0" />
+            </edge>
+            <edge source="com.design.oa.activiti.controller.ModelerController" target="org.springframework.web.bind.annotation.RequestMapping">
+              <point x="-5.6843418860808015E-14" y="-154.0" />
+              <point x="0.0" y="107.5" />
+            </edge>
+            <edge source="com.design.oa.common.RestServiceController" target="java.io.Serializable">
+              <point x="0.0" y="-84.5" />
+              <point x="0.0" y="15.5" />
+            </edge>
+            <edge source="com.design.oa.activiti.controller.ModelerController" target="com.design.oa.common.RestServiceController">
+              <point x="-140.33333333333337" y="-154.0" />
+              <point x="236.66666666666669" y="321.0" />
+              <point x="122.5" y="321.0" />
+              <point x="0.0" y="84.5" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.8249258160237388" x="25.0" y="271.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Constructors</Category>
+            <Category>Methods</Category>
+            <Category>Properties</Category>
+            <Category>Inner Classes</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/activiti/activiti-engine/5.22.0/activiti-engine-5.22.0.jar!/org/activiti/engine/repository/Model.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/activiti/activiti-json-converter/5.22.0/activiti-json-converter-5.22.0.jar!/org/activiti/editor/constants/ModelDataJsonConstants.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/activiti/activiti-engine/5.22.0/activiti-engine-5.22.0.jar!/org/activiti/engine/impl/RepositoryServiceImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="192" column="17" selection-start-line="192" selection-start-column="17" selection-end-line="192" selection-end-column="17" />
+          <folding>
+            <element signature="e#9951#9952#0" expanded="true" />
+            <element signature="e#10031#10032#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/activiti/activiti-engine/5.22.0/activiti-engine-5.22.0.jar!/org/activiti/engine/RepositoryService.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="88" column="10" selection-start-line="88" selection-start-column="10" selection-end-line="88" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/activiti/config/RejectTaskCMD.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/activiti/config/Reject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2635">
+          <caret line="180" column="69" selection-start-line="180" selection-start-column="69" selection-end-line="180" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/service/impl/EmailServiceImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="30" column="50" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/activiti/controller/ControllerDe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="60" column="15" lean-forward="true" selection-start-line="60" selection-start-column="15" selection-end-line="60" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/activiti/config/ApplicationContextUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-core/1.4.0/shiro-core-1.4.0.jar!/org/apache/shiro/crypto/hash/Md5Hash.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
+          <folding>
+            <element signature="e#601#602#0" expanded="true" />
+            <element signature="e#659#660#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/activiti/controller/ModelerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2193">
+          <caret line="150" column="5" selection-start-line="150" selection-start-column="5" selection-end-line="150" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/activiti/controller/ProcessController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/activiti/controller/TaskController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2703">
+          <caret line="190" column="34" selection-start-line="190" selection-start-column="34" selection-end-line="190" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/utils/Cfg_Activiti.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="81" column="19" selection-start-line="81" selection-start-column="19" selection-end-line="81" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/utils/EncryPassword.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/utils/MailDataSourceConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/utils/MailUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="41" column="20" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/activiti/controller/ModelController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="48" column="31" selection-start-line="48" selection-start-column="23" selection-end-line="48" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/dao/TextMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/service/DocumentService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/com.design.oa.dao.TextMapper">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>com.design.oa.dao.TextMapper</OriginalElement>
+          <nodes>
+            <node x="" y="">com.design.oa.dao.IncomingMapper</node>
+            <node x="" y="">com.design.oa.dao.TextMapper</node>
+            <node x="" y="">com.design.oa.controller.DocumentController</node>
+            <node x="" y="">com.design.oa.service.impl.DocumentServiceImp</node>
+            <node x="" y="">com.design.oa.dao.OutgoingMessageMapper</node>
+            <node x="" y="">com.design.oa.service.DocumentService</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.43075550267697804" x="1061.0" y="625.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Constructors</Category>
+            <Category>Methods</Category>
+            <Category>Properties</Category>
+            <Category>Inner Classes</Category>
+          </Categories>
+          <SCOPE>Project Files</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/service/impl/DocumentServiceImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-153">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/com.design.oa.service.impl.DocumentServiceImp">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>com.design.oa.service.impl.DocumentServiceImp</OriginalElement>
+          <nodes>
+            <node x="987.0" y="11.5">com.design.oa.dao.IncomingMapper</node>
+            <node x="348.8666666666667" y="321.0">com.design.oa.controller.DocumentController</node>
+            <node x="725.5916666666667" y="321.0">com.design.oa.service.impl.DocumentServiceImp</node>
+            <node x="502.0" y="23.0">com.design.oa.dao.OutgoingMessageMapper</node>
+            <node x="0.0" y="0.0">com.design.oa.service.DocumentService</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="com.design.oa.service.impl.DocumentServiceImp" target="com.design.oa.dao.IncomingMapper">
+              <point x="160.66666666666657" y="-130.5" />
+              <point x="1127.2583333333332" y="301.0" />
+              <point x="1295.25" y="301.0" />
+              <point x="102.75" y="119.0" />
+            </edge>
+            <edge source="com.design.oa.controller.DocumentController" target="com.design.oa.service.DocumentService">
+              <point x="-109.33333333333337" y="-130.5" />
+              <point x="403.5333333333333" y="301.0" />
+              <point x="120.5" y="301.0" />
+              <point x="-120.5" y="130.5" />
+            </edge>
+            <edge source="com.design.oa.service.impl.DocumentServiceImp" target="com.design.oa.dao.OutgoingMessageMapper">
+              <point x="-5.6843418860808015E-14" y="-130.5" />
+              <point x="966.5916666666667" y="291.0" />
+              <point x="850.75" y="291.0" />
+              <point x="116.25" y="107.5" />
+            </edge>
+            <edge source="com.design.oa.controller.DocumentController" target="com.design.oa.dao.OutgoingMessageMapper">
+              <point x="-1.1368683772161603E-13" y="-130.5" />
+              <point x="512.8666666666666" y="291.0" />
+              <point x="618.25" y="291.0" />
+              <point x="-116.25" y="107.5" />
+            </edge>
+            <edge source="com.design.oa.service.impl.DocumentServiceImp" target="com.design.oa.service.DocumentService">
+              <point x="-160.66666666666669" y="-130.5" />
+              <point x="805.9250000000001" y="281.0" />
+              <point x="361.5" y="281.0" />
+              <point x="120.5" y="130.5" />
+            </edge>
+            <edge source="com.design.oa.controller.DocumentController" target="com.design.oa.dao.IncomingMapper">
+              <point x="109.33333333333326" y="-130.5" />
+              <point x="622.1999999999999" y="301.0" />
+              <point x="1089.75" y="301.0" />
+              <point x="-102.75" y="119.0" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.6850415512465373" x="339.0" y="178.0" />
+          <SelectedNodes>
+            <node>com.design.oa.service.impl.DocumentServiceImp</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>Project Files</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/com.design.oa.service.impl.AdminServiceImp">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>com.design.oa.service.impl.AdminServiceImp</OriginalElement>
+          <nodes>
+            <node x="" y="">com.design.oa.controller.RoleController</node>
+            <node x="" y="">com.design.oa.service.impl.AdminServiceImp</node>
+            <node x="" y="">com.design.oa.controller.AdminController</node>
+            <node x="" y="">com.design.oa.service.AdminService</node>
+            <node x="" y="">com.design.oa.dao.RoleMapper</node>
+            <node x="" y="">com.design.oa.dao.AdminMapper</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.4419713831478537" x="595.0" y="619.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>Project Files</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/com.design.oa.controller.AdminController">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>com.design.oa.controller.AdminController</OriginalElement>
+          <nodes>
+            <node x="" y="">com.design.oa.controller.RoleController</node>
+            <node x="" y="">com.design.oa.service.impl.AdminServiceImp</node>
+            <node x="" y="">com.design.oa.controller.AdminController</node>
+            <node x="" y="">com.design.oa.service.AdminService</node>
+            <node x="" y="">com.design.oa.service.RoleService</node>
+            <node x="" y="">com.design.oa.service.impl.RoleServiceImp</node>
+            <node x="" y="">com.design.oa.dao.RoleMapper</node>
+            <node x="" y="">com.design.oa.dao.AdminMapper</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0419713831478536" x="380.0" y="632.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>Project Files</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JavaScript-modules-diagram/F:/idea/oa/src/main/java/com/design/oa/shiro">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JavaScript-modules-diagram</ID>
+          <OriginalElement>$PROJECT_DIR$/src/main/java/com/design/oa/shiro</OriginalElement>
+          <nodes />
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="460.0" y="278.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>All</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>Details</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/com.design.oa.model.Admin">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>com.design.oa.model.Admin</OriginalElement>
+          <nodes>
+            <node x="" y="">com.design.oa.model.AnnRead</node>
+            <node x="" y="">com.design.oa.model.Announcement</node>
+            <node x="" y="">com.design.oa.model.Admin</node>
+            <node x="" y="">java.io.Serializable</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.936026936026936" x="316.0" y="277.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Constructors</Category>
+            <Category>Methods</Category>
+            <Category>Properties</Category>
+            <Category>Inner Classes</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/utils/ReceiverOneMail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="35" column="53" selection-start-line="35" selection-start-column="53" selection-end-line="35" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/controller/DocumentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1156">
+          <caret line="88" column="29" selection-start-line="88" selection-start-column="29" selection-end-line="88" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="56" column="39" selection-start-line="56" selection-start-column="39" selection-end-line="56" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/controller/RoleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="57" column="38" selection-start-line="57" selection-start-column="38" selection-end-line="57" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/shiro/CustomDefaultWebSessionManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="23" column="17" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/activiti/controller/DeploymentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="46" column="31" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="172" column="63" selection-start-line="172" selection-start-column="63" selection-end-line="172" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/controller/AnnController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2342">
+          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/controller/AttenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2563">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/controller/ContactController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-153">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/controller/DepartmentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/controller/MailController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2066">
+          <caret line="60" column="42" selection-start-line="60" selection-start-column="42" selection-end-line="60" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/service/impl/AnnServiceImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3009">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/service/impl/AttenServiceImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="161" column="40" lean-forward="true" selection-start-line="161" selection-start-column="40" selection-end-line="161" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/service/impl/RoleServiceImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/service/impl/AttenAdminServiceImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-96">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/activiti/config/ActivitiUserUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-34">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/activiti/config/Cfg_Util.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/activiti/config/ProcessConstant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-195">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/design/oa/controller/AdminController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1156">
+          <caret line="85" column="41" selection-start-line="85" selection-start-column="41" selection-end-line="85" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="20" lean-forward="true" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Spring</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>oa</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: com.alibaba:fastjson:1.2.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

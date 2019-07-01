@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.design.oa.dao.MenuMapper">
+    <resultMap id="BaseResultMap" type="com.design.oa.model.Menu">
+        <id column="menu_id" jdbcType="INTEGER" property="menuId"/>
+        <result column="menu_name" jdbcType="CHAR" property="menuName"/>
+        <result column="menu_url" jdbcType="CHAR" property="menuUrl"/>
+        <result column="menu_fatherMenu" jdbcType="INTEGER" property="menuFathermenu"/>
+        <result column="menu_state" jdbcType="INTEGER" property="menuState"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    menu_id, menu_name, menu_url, menu_fatherMenu, menu_state
+  </sql>
+    <select id="getUserAllMenus" parameterType="int" resultMap="BaseResultMap">
+    select distinct menu.* from user,user_role,role_menu,role,menu where 1=1 and
+   `user`.user_id = user_role.user_id and user_role.role_id = role.role_id  and
+    role.role_id = role_menu.role_id and role_menu.menu_id = menu.menu_id and role.role_state = 1
+    and `user`.user_id
+    =#{userId}
+  </select>
+
+    <select id="searchUserTreeById" resultMap="BaseResultMap" parameterType="int">
+        SELECT menu_id,menu_name,menu_fatherMenu FROM menu WHERE menu_fatherMenu=#{pId}
+    </select>
+
+    <select id="getAdminAllMenus" parameterType="int" resultMap="BaseResultMap">
+    select distinct menu.* from admin,admin_role,role_menu,role,menu where 1=1 and
+   `admin`.admin_id = admin_role.admin_id and admin_role.role_id = role.role_id  and
+    role.role_id = role_menu.role_id and role_menu.menu_id = menu.menu_id and role.role_state = 1
+    and `admin`.admin_id
+    =#{adminId}
+  </select>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from menu
+        where menu_id = #{menuId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from menu
+    where menu_id = #{menuId,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.design.oa.model.Menu">
+    insert into menu (menu_id, menu_name, menu_url, 
+      menu_fatherMenu, menu_state)
+    values (#{menuId,jdbcType=INTEGER}, #{menuName,jdbcType=CHAR}, #{menuUrl,jdbcType=CHAR}, 
+      #{menuFathermenu,jdbcType=INTEGER}, #{menuState,jdbcType=INTEGER})
+  </insert>
+    <insert id="insertSelective" parameterType="com.design.oa.model.Menu">
+        insert into menu
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="menuId != null">
+                menu_id,
+            </if>
+            <if test="menuName != null">
+                menu_name,
+            </if>
+            <if test="menuUrl != null">
+                menu_url,
+            </if>
+            <if test="menuFathermenu != null">
+                menu_fatherMenu,
+            </if>
+            <if test="menuState != null">
+                menu_state,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="menuId != null">
+                #{menuId,jdbcType=INTEGER},
+            </if>
+            <if test="menuName != null">
+                #{menuName,jdbcType=CHAR},
+            </if>
+            <if test="menuUrl != null">
+                #{menuUrl,jdbcType=CHAR},
+            </if>
+            <if test="menuFathermenu != null">
+                #{menuFathermenu,jdbcType=INTEGER},
+            </if>
+            <if test="menuState != null">
+                #{menuState,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.design.oa.model.Menu">
+        update menu
+        <set>
+            <if test="menuName != null">
+                menu_name = #{menuName,jdbcType=CHAR},
+            </if>
+            <if test="menuUrl != null">
+                menu_url = #{menuUrl,jdbcType=CHAR},
+            </if>
+            <if test="menuFathermenu != null">
+                menu_fatherMenu = #{menuFathermenu,jdbcType=INTEGER},
+            </if>
+            <if test="menuState != null">
+                menu_state = #{menuState,jdbcType=INTEGER},
+            </if>
+        </set>
+        where menu_id = #{menuId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.design.oa.model.Menu">
+    update menu
+    set menu_name = #{menuName,jdbcType=CHAR},
+      menu_url = #{menuUrl,jdbcType=CHAR},
+      menu_fatherMenu = #{menuFathermenu,jdbcType=INTEGER},
+      menu_state = #{menuState,jdbcType=INTEGER}
+    where menu_id = #{menuId,jdbcType=INTEGER}
+  </update>
+</mapper>

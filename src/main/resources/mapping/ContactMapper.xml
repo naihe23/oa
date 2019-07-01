@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.design.oa.dao.ContactMapper">
+  <resultMap id="BaseResultMap" type="com.design.oa.model.Contact">
+    <id column="contact_id" jdbcType="INTEGER" property="contactId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="contact_name" jdbcType="CHAR" property="contactName" />
+    <result column="contact_phone" jdbcType="DECIMAL" property="contactPhone" />
+    <result column="contact_address" jdbcType="CHAR" property="contactAddress" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    contact_id, user_id, contact_name, contact_phone, contact_address
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from contact
+    where contact_id = #{contactId,jdbcType=INTEGER}
+  </select>
+
+  <select id="getAllContact" parameterType="int" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from contact
+    where
+    user_id = #{userId}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from contact
+    where contact_id = #{contactId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.design.oa.model.Contact">
+    insert into contact (contact_id, user_id, contact_name, 
+      contact_phone, contact_address)
+    values (#{contactId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{contactName,jdbcType=CHAR}, 
+      #{contactPhone,jdbcType=DECIMAL}, #{contactAddress,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.design.oa.model.Contact">
+    insert into contact
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="contactId != null">
+        contact_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="contactName != null">
+        contact_name,
+      </if>
+      <if test="contactPhone != null">
+        contact_phone,
+      </if>
+      <if test="contactAddress != null">
+        contact_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="contactId != null">
+        #{contactId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="contactName != null">
+        #{contactName,jdbcType=CHAR},
+      </if>
+      <if test="contactPhone != null">
+        #{contactPhone,jdbcType=DECIMAL},
+      </if>
+      <if test="contactAddress != null">
+        #{contactAddress,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.design.oa.model.Contact">
+    update contact
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="contactName != null">
+        contact_name = #{contactName,jdbcType=CHAR},
+      </if>
+      <if test="contactPhone != null">
+        contact_phone = #{contactPhone,jdbcType=DECIMAL},
+      </if>
+      <if test="contactAddress != null">
+        contact_address = #{contactAddress,jdbcType=CHAR},
+      </if>
+    </set>
+    where contact_id = #{contactId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.design.oa.model.Contact">
+    update contact
+    set user_id = #{userId,jdbcType=INTEGER},
+      contact_name = #{contactName,jdbcType=CHAR},
+      contact_phone = #{contactPhone,jdbcType=DECIMAL},
+      contact_address = #{contactAddress,jdbcType=CHAR}
+    where contact_id = #{contactId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,43 @@
+server: 8080
+spring:
+  test1:
+    datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/oa?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai
+      username: root
+      password: 123
+      type: com.mchange.v2.c3p0.ComboPooledDataSource
+  test2:
+    datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/email?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai
+      username: root
+      password: 123
+      type: com.mchange.v2.c3p0.ComboPooledDataSource
+  main:
+    allow-bean-definition-overriding: true
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+  mail:
+    host: localhost
+    username: mailtest@oa.cn
+    password: 123456
+    default-encoding: UTF-8
+    port: 25
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          timeout: 25000
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: com.design.oa.model
+logging:
+  config: src/main/resources/log4j.properties
+
+

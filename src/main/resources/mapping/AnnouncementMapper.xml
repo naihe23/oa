@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.design.oa.dao.AnnouncementMapper">
+    <resultMap id="BaseResultMap" type="com.design.oa.model.Announcement">
+        <id column="ann_id" jdbcType="INTEGER" property="annId"/>
+        <result column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="ann_title" jdbcType="CHAR" property="annTitle"/>
+        <result column="ann_type" jdbcType="INTEGER" property="annType"/>
+        <result column="ann_state" jdbcType="CHAR" property="annState"/>
+        <result column="ann_start_time" jdbcType="TIMESTAMP" property="annStartTime"/>
+        <result column="ann_end_time" jdbcType="TIMESTAMP" property="annEndTime"/>
+        <result column="ann_range" jdbcType="CHAR" property="annRange"/>
+    </resultMap>
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.design.oa.model.Announcement">
+        <result column="ann_text" jdbcType="LONGVARCHAR" property="annText"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ann_id, announcement.user_id, ann_title, ann_type, ann_state, ann_start_time, ann_end_time, ann_range
+  </sql>
+    <sql id="Blob_Column_List">
+    ann_text
+  </sql>
+
+    <select id="selectByUserId" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select distinct
+    announcement.*,user.user_name as annCreater,department.department_name as userDepartment,ann_type.type_name as annTypeName
+    from announcement,ann_user,user,department,ann_type
+    where announcement.ann_id = ann_user.ann_id and ann_range = "部分人员"
+    and announcement.user_id = user.user_id and user.department_id = department.department_id and announcement.ann_type = ann_type.type_id
+     and ann_user.user_id=#{userId} and announcement.ann_state = 1
+  </select>
+
+
+    <select id="selectByDepar" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+     select distinct
+    announcement.*,ann_type.type_name as annTypeName
+    from announcement,ann_depar,user,department,ann_type
+    where announcement.ann_id = ann_depar.ann_id
+    and ann_depar.department_id = department.department_id and announcement.ann_range="部分人员"
+      and user.department_id = department.department_id and announcement.ann_type = ann_type.type_id
+    and user.user_id = #{userId} and announcement.ann_state = 1
+  </select>
+
+    <select id="selectByRole" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+        select distinct
+        announcement.*,user.user_name as annCreater,department.department_name as userDepartment,ann_type.type_name as annTypeName
+        from announcement,ann_role,user_role,user,department,ann_type
+        where announcement.ann_id = ann_role.ann_id and ann_role.role_id = user_role.role_id
+         and announcement.user_id = user.user_id and user.department_id = department.department_id and announcement.ann_type = ann_type.type_id
+        and user_role.user_id = #{userId} and announcement.ann_state = 1
+    </select>
+
+    <select id="selectByAllUser" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        ,user.user_name as annCreater,department.department_name as userDepartment,ann_type.type_name as annTypeName
+        from announcement,user,department,ann_type
+        where ann_range = "所有人员"
+        and announcement.user_id = user.user_id and user.department_id = department.department_id and
+        announcement.ann_type = ann_type.type_id and announcement.ann_state = 1
+    </select>
+
+    <select id="selectUserAndDepar" parameterType="java.lang.Integer"  resultMap="ResultMapWithBLOBs">
+       select  user.user_name as annCreater ,department.department_name as userDepartment
+       from announcement,user,department
+       where announcement.user_id = `user`.user_id and user.department_id = department.department_id
+       and announcement.ann_id = #{annId} and announcement.ann_state = 1
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+        select
+        announcement.*,
+        user.user_name as annCreater ,department.department_name as userDepartment
+        from announcement,user,department
+        where announcement.user_id = `user`.user_id and user.department_id = department.department_id
+        and announcement.ann_id = #{annId}
+    </select>
+
+    <select id="getNotReadAnn" resultMap="ResultMapWithBLOBs">
+        select announcement.* from announcement,ann_read where
+        announcement.ann_id = ann_read.ann_id
+        and ann_read.user_id = #{userId} and announcement.ann_state = 1
+    </select>
+
+    <select id="getReadAnn" resultMap="ResultMapWithBLOBs">
+        select announcement.* ,user.user_name as annCreater,department.department_name as userDepartment,ann_type.type_name as annTypeName
+        from announcement,ann_read,user,department,ann_type
+        where
+        announcement.ann_id = ann_read.ann_id
+        and announcement.user_id = user.user_id and user.department_id = department.department_id and announcement.ann_type = ann_type.type_id
+        and ann_read.user_id = #{userId} and announcement.ann_state = 1
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from announcement
+    where ann_id = #{annId,jdbcType=INTEGER}
+  </delete>
+
+    <insert id="insert" parameterType="com.design.oa.model.Announcement">
+    insert into announcement (ann_id, user_id, ann_title, 
+      ann_type, ann_state, ann_start_time, 
+      ann_end_time, ann_range, ann_text
+      )
+    values (#{annId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{annTitle,jdbcType=CHAR}, 
+      #{annType,jdbcType=INTEGER}, #{annState,jdbcType=CHAR}, #{annStartTime,jdbcType=TIMESTAMP}, 
+      #{annEndTime,jdbcType=TIMESTAMP}, #{annRange,jdbcType=CHAR}, #{annText,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.design.oa.model.Announcement" useGeneratedKeys="true"
+            keyProperty="annId">
+        insert into announcement
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="annId != null">
+                ann_id,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="annTitle != null">
+                ann_title,
+            </if>
+            <if test="annType != null">
+                ann_type,
+            </if>
+            <if test="annState != null">
+                ann_state,
+            </if>
+            <if test="annStartTime != null">
+                ann_start_time,
+            </if>
+            <if test="annEndTime != null">
+                ann_end_time,
+            </if>
+            <if test="annRange != null">
+                ann_range,
+            </if>
+            <if test="annText != null">
+                ann_text,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="annId != null">
+                #{annId,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="annTitle != null">
+                #{annTitle,jdbcType=CHAR},
+            </if>
+            <if test="annType != null">
+                #{annType,jdbcType=INTEGER},
+            </if>
+            <if test="annState != null">
+                #{annState,jdbcType=CHAR},
+            </if>
+            <if test="annStartTime != null">
+                #{annStartTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="annEndTime != null">
+                #{annEndTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="annRange != null">
+                #{annRange,jdbcType=CHAR},
+            </if>
+            <if test="annText != null">
+                #{annText,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.design.oa.model.Announcement">
+        update announcement
+        <set>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="annTitle != null">
+                ann_title = #{annTitle,jdbcType=CHAR},
+            </if>
+            <if test="annType != null">
+                ann_type = #{annType,jdbcType=INTEGER},
+            </if>
+            <if test="annState != null">
+                ann_state = #{annState,jdbcType=CHAR},
+            </if>
+            <if test="annStartTime != null">
+                ann_start_time = #{annStartTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="annEndTime != null">
+                ann_end_time = #{annEndTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="annRange != null">
+                ann_range = #{annRange,jdbcType=CHAR},
+            </if>
+            <if test="annText != null">
+                ann_text = #{annText,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where ann_id = #{annId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.design.oa.model.Announcement">
+    update announcement
+    set user_id = #{userId,jdbcType=INTEGER},
+      ann_title = #{annTitle,jdbcType=CHAR},
+      ann_type = #{annType,jdbcType=INTEGER},
+      ann_state = #{annState,jdbcType=CHAR},
+      ann_start_time = #{annStartTime,jdbcType=TIMESTAMP},
+      ann_end_time = #{annEndTime,jdbcType=TIMESTAMP},
+      ann_range = #{annRange,jdbcType=CHAR},
+      ann_text = #{annText,jdbcType=LONGVARCHAR}
+    where ann_id = #{annId,jdbcType=INTEGER}
+  </update>
+    <update id="updateByPrimaryKey" parameterType="com.design.oa.model.Announcement">
+    update announcement
+    set user_id = #{userId,jdbcType=INTEGER},
+      ann_title = #{annTitle,jdbcType=CHAR},
+      ann_type = #{annType,jdbcType=INTEGER},
+      ann_state = #{annState,jdbcType=CHAR},
+      ann_start_time = #{annStartTime,jdbcType=TIMESTAMP},
+      ann_end_time = #{annEndTime,jdbcType=TIMESTAMP},
+      ann_range = #{annRange,jdbcType=CHAR}
+    where ann_id = #{annId,jdbcType=INTEGER}
+  </update>
+</mapper>

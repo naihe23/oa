@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.design.oa.dao.TextMapper">
+  <resultMap id="BaseResultMap" type="com.design.oa.model.Text">
+    <id column="text_id" jdbcType="INTEGER" property="textId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="text_name" jdbcType="CHAR" property="textName" />
+    <result column="text_type" jdbcType="CHAR" property="textType" />
+    <result column="text_content" jdbcType="CHAR" property="textContent" />
+    <result column="text_state" jdbcType="INTEGER" property="textState" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    text_id, user_id, text_name, text_type, text_content, text_state
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from text
+    where text_id = #{textId,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectAllTexts" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from text where text_state = 1
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from text
+    where text_id = #{textId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.design.oa.model.Text">
+    insert into text (text_id, user_id, text_name, 
+      text_type, text_content, text_state
+      )
+    values (#{textId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{textName,jdbcType=CHAR}, 
+      #{textType,jdbcType=CHAR}, #{textContent,jdbcType=CHAR}, #{textState,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.design.oa.model.Text">
+    insert into text
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="textId != null">
+        text_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="textName != null">
+        text_name,
+      </if>
+      <if test="textType != null">
+        text_type,
+      </if>
+      <if test="textContent != null">
+        text_content,
+      </if>
+      <if test="textState != null">
+        text_state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="textId != null">
+        #{textId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="textName != null">
+        #{textName,jdbcType=CHAR},
+      </if>
+      <if test="textType != null">
+        #{textType,jdbcType=CHAR},
+      </if>
+      <if test="textContent != null">
+        #{textContent,jdbcType=CHAR},
+      </if>
+      <if test="textState != null">
+        #{textState,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.design.oa.model.Text">
+    update text
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="textName != null">
+        text_name = #{textName,jdbcType=CHAR},
+      </if>
+      <if test="textType != null">
+        text_type = #{textType,jdbcType=CHAR},
+      </if>
+      <if test="textContent != null">
+        text_content = #{textContent,jdbcType=CHAR},
+      </if>
+      <if test="textState != null">
+        text_state = #{textState,jdbcType=INTEGER},
+      </if>
+    </set>
+    where text_id = #{textId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.design.oa.model.Text">
+    update text
+    set user_id = #{userId,jdbcType=INTEGER},
+      text_name = #{textName,jdbcType=CHAR},
+      text_type = #{textType,jdbcType=CHAR},
+      text_content = #{textContent,jdbcType=CHAR},
+      text_state = #{textState,jdbcType=INTEGER}
+    where text_id = #{textId,jdbcType=INTEGER}
+  </update>
+</mapper>

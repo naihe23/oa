@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.design.oa.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.design.oa.model.User">
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+    <result column="department_name" jdbcType="CHAR" property="departmentName" />
+    <result column="admin_id" jdbcType="INTEGER" property="adminId" />
+    <result column="user_name" jdbcType="CHAR" property="userName" />
+    <result column="user_sex" jdbcType="CHAR" property="userSex" />
+    <result column="user_phone" jdbcType="CHAR" property="userPhone" />
+    <result column="user_address" jdbcType="CHAR" property="userAddress" />
+    <result column="user_email" jdbcType="CHAR" property="userEmail" />
+    <result column="user_qq" jdbcType="CHAR" property="userQq" />
+    <result column="user_job" jdbcType="CHAR" property="userJob" />
+    <result column="user_password" jdbcType="CHAR" property="userPassword" />
+    <result column="user_isLocked" jdbcType="INTEGER" property="userIslocked" />
+    <result column="user_createTime" jdbcType="TIMESTAMP" property="userCreatetime" />
+    <result column="user_birthday" jdbcType="DATE" property="userBirthday" />
+    <result column="user_company_phone" jdbcType="CHAR" property="userCompanyPhone" />
+    <result column="user_company_fex" jdbcType="CHAR" property="userCompanyFex" />
+    <result column="user_home_zip" jdbcType="CHAR" property="userHomeZip" />
+    <result column="user_home_phone" jdbcType="CHAR" property="userHomePhone" />
+    <result column="user_salt" jdbcType="CHAR" property="userSalt" />
+  </resultMap>
+  <resultMap id="UserAuthorityMap" type="com.design.oa.model.UserAuthority">
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="user_isLocked" jdbcType="INTEGER" property="userIsLocked" />
+    <result column="user_name" jdbcType="CHAR" property="userName" />
+    <result column="user_phone" jdbcType="CHAR" property="userPhone" />
+    <result column="user_address" jdbcType="CHAR" property="userAddress" />
+    <result column="department_name" jdbcType="CHAR" property="departmentName" />
+    <result column="role_name" jdbcType="CHAR" property="roleName" />
+  </resultMap>
+  <resultMap id="UserRoleMap" type="com.design.oa.model.UserRoleKey">
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="role_id" jdbcType="INTEGER" property="roleId" />
+
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    user_id, department_id, admin_id, user_name, user_sex, user_phone, user_address, 
+    user_email, user_qq, user_job, user_password, user_isLocked, user_createTime, user_birthday, 
+    user_company_phone, user_company_fex, user_home_zip, user_home_phone, user_salt
+  </sql>
+
+  <!--<select id="getAllUsers" resultMap="UserAuthorityMap" parameterType="String">-->
+    <!--select-->
+    <!--user.user_id, user.user_isLocked,user.user_name,user.user_phone,user.user_address,department.department_name,-->
+    <!--GROUP_CONCAT(role.role_name) as role_name-->
+    <!--from user,department,role,user_role-->
+    <!--where user.department_id = department.department_id-->
+    <!--and user.user_id = user_role.user_id and user_role.role_id = role.role_id-->
+    <!--<if test="userName != null">-->
+      <!--and user_name = #{userName}-->
+    <!--</if>-->
+    <!--group by `user`.user_id-->
+  <!--</select>-->
+
+  <select id="getAllUser" resultMap="UserAuthorityMap" parameterType="String">
+    select user_id,user_isLocked,user_name,user_phone,user_address from user
+     where 1=1
+    <if test="userName != null">
+      and user_name = #{userName}
+    </if>
+  </select>
+  <select id="getAllUserRole" parameterType="int" resultType="String">
+    select  GROUP_CONCAT(role.role_name) as role_name from user_role,role where 1=1 and
+     role.role_id = user_role.role_id and user_role.user_id = #{userId} group by user_role.user_id
+  </select>
+
+  <select id="getAllUserDepar" parameterType="int" resultType="String">
+    select department.department_name from department,user  where 1 =1 and
+    user.department_id = department.department_id and `user`.user_id = #{userId}
+  </select>
+
+  <select id="getUserRoles" parameterType="int" resultMap="UserRoleMap">
+    select * from user_role where user_id = #{userId}
+  </select>
+
+  <select id="selectAllUsers" resultMap="BaseResultMap">
+    select user_id,user_name,department.department_name
+     from user,department
+     where user.department_id = department.department_id
+  </select>
+
+  <select id="selectByDepartmentId" resultMap="BaseResultMap">
+    select user_id,user_name,department.department_name
+     from user,department
+     where user.department_id = department.department_id and department.department_id = #{id}
+  </select>
+
+  <select id="selectByUserName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from user where user_name = #{userName}
+  </select>
+  <select id="findUserByUserName" parameterType="String" resultMap="BaseResultMap">
+    select
+    user.*,department.department_name
+    from user,department
+    where 1=1 and user.department_id = department.department_id and user_name = #{user_name}
+  </select>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.design.oa.model.User">
+    insert into user (user_id, department_id, admin_id, 
+      user_name, user_sex, user_phone, 
+      user_address, user_email, user_qq, 
+      user_job, user_password, user_isLocked, 
+      user_createTime, user_birthday, user_company_phone, 
+      user_company_fex, user_home_zip, user_home_phone, 
+      user_salt)
+    values (#{userId,jdbcType=INTEGER}, #{departmentId,jdbcType=INTEGER}, #{adminId,jdbcType=INTEGER}, 
+      #{userName,jdbcType=CHAR}, #{userSex,jdbcType=CHAR}, #{userPhone,jdbcType=CHAR},
+      #{userAddress,jdbcType=CHAR}, #{userEmail,jdbcType=CHAR}, #{userQq,jdbcType=CHAR},
+      #{userJob,jdbcType=CHAR}, #{userPassword,jdbcType=CHAR}, #{userIslocked,jdbcType=INTEGER}, 
+      #{userCreatetime,jdbcType=TIMESTAMP}, #{userBirthday,jdbcType=DATE}, #{userCompanyPhone,jdbcType=CHAR}, 
+      #{userCompanyFex,jdbcType=CHAR}, #{userHomeZip,jdbcType=CHAR}, #{userHomePhone,jdbcType=CHAR}, 
+      #{userSalt,jdbcType=CHAR})
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.design.oa.model.User" useGeneratedKeys="true" keyProperty="userId">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="departmentId != null">
+        department_id,
+      </if>
+      <if test="adminId != null">
+        admin_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="userSex != null">
+        user_sex,
+      </if>
+      <if test="userPhone != null">
+        user_phone,
+      </if>
+      <if test="userAddress != null">
+        user_address,
+      </if>
+      <if test="userEmail != null">
+        user_email,
+      </if>
+      <if test="userQq != null">
+        user_qq,
+      </if>
+      <if test="userJob != null">
+        user_job,
+      </if>
+      <if test="userPassword != null">
+        user_password,
+      </if>
+      <if test="userIslocked != null">
+        user_isLocked,
+      </if>
+      <if test="userCreatetime != null">
+        user_createTime,
+      </if>
+      <if test="userBirthday != null">
+        user_birthday,
+      </if>
+      <if test="userCompanyPhone != null">
+        user_company_phone,
+      </if>
+      <if test="userCompanyFex != null">
+        user_company_fex,
+      </if>
+      <if test="userHomeZip != null">
+        user_home_zip,
+      </if>
+      <if test="userHomePhone != null">
+        user_home_phone,
+      </if>
+      <if test="userSalt != null">
+        user_salt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="departmentId != null">
+        #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="adminId != null">
+        #{adminId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=CHAR},
+      </if>
+      <if test="userSex != null">
+        #{userSex,jdbcType=CHAR},
+      </if>
+      <if test="userPhone != null">
+        #{userPhone,jdbcType=CHAR},
+      </if>
+      <if test="userAddress != null">
+        #{userAddress,jdbcType=CHAR},
+      </if>
+      <if test="userEmail != null">
+        #{userEmail,jdbcType=CHAR},
+      </if>
+      <if test="userQq != null">
+        #{userQq,jdbcType=CHAR},
+      </if>
+      <if test="userJob != null">
+        #{userJob,jdbcType=CHAR},
+      </if>
+      <if test="userPassword != null">
+        #{userPassword,jdbcType=CHAR},
+      </if>
+      <if test="userIslocked != null">
+        #{userIslocked,jdbcType=INTEGER},
+      </if>
+      <if test="userCreatetime != null">
+        #{userCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userBirthday != null">
+        #{userBirthday,jdbcType=DATE},
+      </if>
+      <if test="userCompanyPhone != null">
+        #{userCompanyPhone,jdbcType=CHAR},
+      </if>
+      <if test="userCompanyFex != null">
+        #{userCompanyFex,jdbcType=CHAR},
+      </if>
+      <if test="userHomeZip != null">
+        #{userHomeZip,jdbcType=CHAR},
+      </if>
+      <if test="userHomePhone != null">
+        #{userHomePhone,jdbcType=CHAR},
+      </if>
+      <if test="userSalt != null">
+        #{userSalt,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.design.oa.model.User">
+    update user
+    <set>
+      <if test="departmentId != null">
+        department_id = #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="adminId != null">
+        admin_id = #{adminId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=CHAR},
+      </if>
+      <if test="userSex != null">
+        user_sex = #{userSex,jdbcType=CHAR},
+      </if>
+      <if test="userPhone != null">
+        user_phone = #{userPhone,jdbcType=CHAR},
+      </if>
+      <if test="userAddress != null">
+        user_address = #{userAddress,jdbcType=CHAR},
+      </if>
+      <if test="userEmail != null">
+        user_email = #{userEmail,jdbcType=CHAR},
+      </if>
+      <if test="userQq != null">
+        user_qq = #{userQq,jdbcType=CHAR},
+      </if>
+      <if test="userJob != null">
+        user_job = #{userJob,jdbcType=CHAR},
+      </if>
+      <if test="userPassword != null">
+        user_password = #{userPassword,jdbcType=CHAR},
+      </if>
+      <if test="userIslocked != null">
+        user_isLocked = #{userIslocked,jdbcType=INTEGER},
+      </if>
+      <if test="userCreatetime != null">
+        user_createTime = #{userCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userBirthday != null">
+        user_birthday = #{userBirthday,jdbcType=DATE},
+      </if>
+      <if test="userCompanyPhone != null">
+        user_company_phone = #{userCompanyPhone,jdbcType=CHAR},
+      </if>
+      <if test="userCompanyFex != null">
+        user_company_fex = #{userCompanyFex,jdbcType=CHAR},
+      </if>
+      <if test="userHomeZip != null">
+        user_home_zip = #{userHomeZip,jdbcType=CHAR},
+      </if>
+      <if test="userHomePhone != null">
+        user_home_phone = #{userHomePhone,jdbcType=CHAR},
+      </if>
+      <if test="userSalt != null">
+        user_salt = #{userSalt,jdbcType=CHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.design.oa.model.User">
+    update user
+    set department_id = #{departmentId,jdbcType=INTEGER},
+      admin_id = #{adminId,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=CHAR},
+      user_sex = #{userSex,jdbcType=CHAR},
+      user_phone = #{userPhone,jdbcType=CHAR},
+      user_address = #{userAddress,jdbcType=CHAR},
+      user_email = #{userEmail,jdbcType=CHAR},
+      user_qq = #{userQq,jdbcType=CHAR},
+      user_job = #{userJob,jdbcType=CHAR},
+      user_password = #{userPassword,jdbcType=CHAR},
+      user_isLocked = #{userIslocked,jdbcType=INTEGER},
+      user_createTime = #{userCreatetime,jdbcType=TIMESTAMP},
+      user_birthday = #{userBirthday,jdbcType=DATE},
+      user_company_phone = #{userCompanyPhone,jdbcType=CHAR},
+      user_company_fex = #{userCompanyFex,jdbcType=CHAR},
+      user_home_zip = #{userHomeZip,jdbcType=CHAR},
+      user_home_phone = #{userHomePhone,jdbcType=CHAR},
+      user_salt = #{userSalt,jdbcType=CHAR}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+</mapper>

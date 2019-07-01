@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.design.oa.dao.RoleMapper">
+    <resultMap id="BaseResultMap" type="com.design.oa.model.Role">
+        <id column="role_id" jdbcType="INTEGER" property="roleId"/>
+        <result column="role_name" jdbcType="CHAR" property="roleName"/>
+        <result column="role_describe" jdbcType="CHAR" property="roleDescribe"/>
+        <result column="role_create_time"   property="roleCreateTime"/>
+        <result column="role_creater" jdbcType="CHAR" property="roleCreater"/>
+        <result column="role_updater" jdbcType="CHAR" property="roleUpdater"/>
+        <result column="role_update_time"   property="roleUpdateTime"/>
+        <result column="role_state" jdbcType="INTEGER" property="roleState"/>
+        <result column="menu_name" jdbcType="CHAR" property="menuName"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    role_id, role_name, role_describe,  role_create_time, role_creater, role_updater,
+    role_update_time, role_state
+  </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from role
+        where role_id = #{roleId,jdbcType=INTEGER}
+    </select>
+    <select id="selectByRoleName" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from role
+        where role_name = #{roleName,jdbcType=CHAR}
+    </select>
+
+    <select id="seleceAllRoles" resultMap="BaseResultMap">
+        select * from role
+    </select>
+    <select id="getUserRolesMessage" parameterType="int" resultMap="BaseResultMap">
+        select role.* from user_role,role where user_role.role_id = role.role_id and user_role.user_id = #{userId}
+    </select>
+
+    <select id="selectAllRolesOrByRoleName" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        role.*,GROUP_CONCAT(menu.menu_name) as menu_name
+        from role,role_menu,menu
+        where role.role_id = role_menu.role_id and role_menu.menu_id = menu.menu_id
+        <if test=" roleName != null">
+            and role_name = #{roleName}
+        </if>
+        group by `role`.role_id
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from role
+    where role_id = #{roleId,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.design.oa.model.Role">
+    insert into role (role_id, role_name, role_describe, 
+      role_create_time, role_creater, role_updater, 
+      role_update_time, role_state)
+    values (#{roleId,jdbcType=INTEGER}, #{roleName,jdbcType=CHAR}, #{roleDescribe,jdbcType=CHAR}, 
+      #{roleCreateTime,jdbcType=TIMESTAMP}, #{roleCreater,jdbcType=CHAR}, #{roleUpdater,jdbcType=CHAR}, 
+      #{roleUpdateTime,jdbcType=TIMESTAMP}, #{roleState,jdbcType=INTEGER})
+  </insert>
+    <insert id="insertSelective" parameterType="com.design.oa.model.Role" useGeneratedKeys="true" keyProperty="roleId">
+        insert into role
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="roleId != null">
+                role_id,
+            </if>
+            <if test="roleName != null">
+                role_name,
+            </if>
+            <if test="roleDescribe != null">
+                role_describe,
+            </if>
+            <if test="roleCreateTime != null">
+                role_create_time,
+            </if>
+            <if test="roleCreater != null">
+                role_creater,
+            </if>
+            <if test="roleUpdater != null">
+                role_updater,
+            </if>
+            <if test="roleUpdateTime != null">
+                role_update_time,
+            </if>
+            <if test="roleState != null">
+                role_state,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="roleId != null">
+                #{roleId,jdbcType=INTEGER},
+            </if>
+            <if test="roleName != null">
+                #{roleName,jdbcType=CHAR},
+            </if>
+            <if test="roleDescribe != null">
+                #{roleDescribe,jdbcType=CHAR},
+            </if>
+            <if test="roleCreateTime != null">
+                #{roleCreateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="roleCreater != null">
+                #{roleCreater,jdbcType=CHAR},
+            </if>
+            <if test="roleUpdater != null">
+                #{roleUpdater,jdbcType=CHAR},
+            </if>
+            <if test="roleUpdateTime != null">
+                #{roleUpdateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="roleState != null">
+                #{roleState,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.design.oa.model.Role">
+        update role
+        <set>
+            <if test="roleName != null">
+                role_name = #{roleName,jdbcType=CHAR},
+            </if>
+            <if test="roleDescribe != null">
+                role_describe = #{roleDescribe,jdbcType=CHAR},
+            </if>
+            <if test="roleCreateTime != null">
+                role_create_time = #{roleCreateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="roleCreater != null">
+                role_creater = #{roleCreater,jdbcType=CHAR},
+            </if>
+            <if test="roleUpdater != null">
+                role_updater = #{roleUpdater,jdbcType=CHAR},
+            </if>
+            <if test="roleUpdateTime != null">
+                role_update_time = #{roleUpdateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="roleState != null">
+                role_state = #{roleState,jdbcType=INTEGER},
+            </if>
+        </set>
+        where role_id = #{roleId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.design.oa.model.Role">
+    update role
+    set role_name = #{roleName,jdbcType=CHAR},
+      role_describe = #{roleDescribe,jdbcType=CHAR},
+      role_create_time = #{roleCreateTime,jdbcType=TIMESTAMP},
+      role_creater = #{roleCreater,jdbcType=CHAR},
+      role_updater = #{roleUpdater,jdbcType=CHAR},
+      role_update_time = #{roleUpdateTime,jdbcType=TIMESTAMP},
+      role_state = #{roleState,jdbcType=INTEGER}
+    where role_id = #{roleId,jdbcType=INTEGER}
+  </update>
+</mapper>

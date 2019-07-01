@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.design.oa.dao.AnnTypeMapper">
+  <resultMap id="BaseResultMap" type="com.design.oa.model.AnnType">
+    <id column="type_id" jdbcType="INTEGER" property="typeId" />
+    <result column="type_name" jdbcType="CHAR" property="typeName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    type_id, type_name
+  </sql>
+
+  <select id="selectAllType" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from ann_type
+  </select>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ann_type
+    where type_id = #{typeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ann_type
+    where type_id = #{typeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.design.oa.model.AnnType">
+    insert into ann_type (type_id, type_name)
+    values (#{typeId,jdbcType=INTEGER}, #{typeName,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.design.oa.model.AnnType">
+    insert into ann_type
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="typeId != null">
+        type_id,
+      </if>
+      <if test="typeName != null">
+        type_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="typeId != null">
+        #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="typeName != null">
+        #{typeName,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.design.oa.model.AnnType">
+    update ann_type
+    <set>
+      <if test="typeName != null">
+        type_name = #{typeName,jdbcType=CHAR},
+      </if>
+    </set>
+    where type_id = #{typeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.design.oa.model.AnnType">
+    update ann_type
+    set type_name = #{typeName,jdbcType=CHAR}
+    where type_id = #{typeId,jdbcType=INTEGER}
+  </update>
+</mapper>

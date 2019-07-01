@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.design.oa.dao.WorkflowMapper">
+  <resultMap id="BaseResultMap" type="com.design.oa.model.Workflow">
+    <id column="workflow_id" jdbcType="INTEGER" property="workflowId" />
+    <result column="admin_id" jdbcType="INTEGER" property="adminId" />
+    <result column="workflow_name" jdbcType="CHAR" property="workflowName" />
+    <result column="workflow_url" jdbcType="CHAR" property="workflowUrl" />
+    <result column="workflow_type" jdbcType="CHAR" property="workflowType" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    workflow_id, admin_id, workflow_name, workflow_url, workflow_type
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from workflow
+    where workflow_id = #{workflowId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from workflow
+    where workflow_id = #{workflowId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.design.oa.model.Workflow">
+    insert into workflow (workflow_id, admin_id, workflow_name, 
+      workflow_url, workflow_type)
+    values (#{workflowId,jdbcType=INTEGER}, #{adminId,jdbcType=INTEGER}, #{workflowName,jdbcType=CHAR}, 
+      #{workflowUrl,jdbcType=CHAR}, #{workflowType,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.design.oa.model.Workflow">
+    insert into workflow
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="workflowId != null">
+        workflow_id,
+      </if>
+      <if test="adminId != null">
+        admin_id,
+      </if>
+      <if test="workflowName != null">
+        workflow_name,
+      </if>
+      <if test="workflowUrl != null">
+        workflow_url,
+      </if>
+      <if test="workflowType != null">
+        workflow_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="workflowId != null">
+        #{workflowId,jdbcType=INTEGER},
+      </if>
+      <if test="adminId != null">
+        #{adminId,jdbcType=INTEGER},
+      </if>
+      <if test="workflowName != null">
+        #{workflowName,jdbcType=CHAR},
+      </if>
+      <if test="workflowUrl != null">
+        #{workflowUrl,jdbcType=CHAR},
+      </if>
+      <if test="workflowType != null">
+        #{workflowType,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.design.oa.model.Workflow">
+    update workflow
+    <set>
+      <if test="adminId != null">
+        admin_id = #{adminId,jdbcType=INTEGER},
+      </if>
+      <if test="workflowName != null">
+        workflow_name = #{workflowName,jdbcType=CHAR},
+      </if>
+      <if test="workflowUrl != null">
+        workflow_url = #{workflowUrl,jdbcType=CHAR},
+      </if>
+      <if test="workflowType != null">
+        workflow_type = #{workflowType,jdbcType=CHAR},
+      </if>
+    </set>
+    where workflow_id = #{workflowId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.design.oa.model.Workflow">
+    update workflow
+    set admin_id = #{adminId,jdbcType=INTEGER},
+      workflow_name = #{workflowName,jdbcType=CHAR},
+      workflow_url = #{workflowUrl,jdbcType=CHAR},
+      workflow_type = #{workflowType,jdbcType=CHAR}
+    where workflow_id = #{workflowId,jdbcType=INTEGER}
+  </update>
+</mapper>

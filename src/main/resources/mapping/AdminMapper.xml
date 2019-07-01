@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.design.oa.dao.AdminMapper">
+  <resultMap id="BaseResultMap" type="com.design.oa.model.Admin">
+    <id column="admin_id" jdbcType="INTEGER" property="adminId" />
+    <result column="admin_name" jdbcType="CHAR" property="adminName" />
+    <result column="admin_password" jdbcType="CHAR" property="adminPassword" />
+    <result column="admin_state" jdbcType="INTEGER" property="adminState" />
+    <result column="admin_salt" jdbcType="CHAR" property="adminSalt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    admin_id, admin_name, admin_password, admin_state, admin_salt
+  </sql>
+
+
+
+
+
+  <select id="findAdminByAdminName"  parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from admin
+    where admin_name = #{adminName}
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from admin
+    where admin_id = #{adminId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from admin
+    where admin_id = #{adminId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.design.oa.model.Admin">
+    insert into admin (admin_id, admin_name, admin_password, 
+      admin_state, admin_salt)
+    values (#{adminId,jdbcType=INTEGER}, #{adminName,jdbcType=CHAR}, #{adminPassword,jdbcType=CHAR}, 
+      #{adminState,jdbcType=INTEGER}, #{adminSalt,jdbcType=CHAR})
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.design.oa.model.Admin" useGeneratedKeys="true" keyProperty="adminId">
+    insert into admin
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="adminId != null">
+        admin_id,
+      </if>
+      <if test="adminName != null">
+        admin_name,
+      </if>
+      <if test="adminPassword != null">
+        admin_password,
+      </if>
+      <if test="adminState != null">
+        admin_state,
+      </if>
+      <if test="adminSalt != null">
+        admin_salt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="adminId != null">
+        #{adminId,jdbcType=INTEGER},
+      </if>
+      <if test="adminName != null">
+        #{adminName,jdbcType=CHAR},
+      </if>
+      <if test="adminPassword != null">
+        #{adminPassword,jdbcType=CHAR},
+      </if>
+      <if test="adminState != null">
+        #{adminState,jdbcType=INTEGER},
+      </if>
+      <if test="adminSalt != null">
+        #{adminSalt,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.design.oa.model.Admin">
+    update admin
+    <set>
+      <if test="adminName != null">
+        admin_name = #{adminName,jdbcType=CHAR},
+      </if>
+      <if test="adminPassword != null">
+        admin_password = #{adminPassword,jdbcType=CHAR},
+      </if>
+      <if test="adminState != null">
+        admin_state = #{adminState,jdbcType=INTEGER},
+      </if>
+      <if test="adminSalt != null">
+        admin_salt = #{adminSalt,jdbcType=CHAR},
+      </if>
+    </set>
+    where admin_id = #{adminId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.design.oa.model.Admin">
+    update admin
+    set admin_name = #{adminName,jdbcType=CHAR},
+      admin_password = #{adminPassword,jdbcType=CHAR},
+      admin_state = #{adminState,jdbcType=INTEGER},
+      admin_salt = #{adminSalt,jdbcType=CHAR}
+    where admin_id = #{adminId,jdbcType=INTEGER}
+  </update>
+</mapper>

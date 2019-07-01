@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.design.oa.dao.AnnReadMapper">
+  <resultMap id="BaseResultMap" type="com.design.oa.model.AnnRead">
+    <id column="ann_read_id" jdbcType="INTEGER" property="annReadId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="ann_id" jdbcType="INTEGER" property="annId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ann_read_id, user_id, ann_id
+  </sql>
+
+  <select id="selectByAnnIdAndUserId" parameterType="com.design.oa.model.AnnRead" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from ann_read
+    where ann_id = #{annId,jdbcType=INTEGER} and user_id = #{userId}
+  </select>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ann_read
+    where ann_read_id = #{annReadId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ann_read
+    where ann_read_id = #{annReadId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.design.oa.model.AnnRead">
+    insert into ann_read (ann_read_id, user_id, ann_id
+      )
+    values (#{annReadId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{annId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.design.oa.model.AnnRead">
+    insert into ann_read
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="annReadId != null">
+        ann_read_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="annId != null">
+        ann_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="annReadId != null">
+        #{annReadId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="annId != null">
+        #{annId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.design.oa.model.AnnRead">
+    update ann_read
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="annId != null">
+        ann_id = #{annId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ann_read_id = #{annReadId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.design.oa.model.AnnRead">
+    update ann_read
+    set user_id = #{userId,jdbcType=INTEGER},
+      ann_id = #{annId,jdbcType=INTEGER}
+    where ann_read_id = #{annReadId,jdbcType=INTEGER}
+  </update>
+</mapper>

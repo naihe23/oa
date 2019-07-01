@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.design.oa.dao.IncomingMapper">
+  <resultMap id="BaseResultMap" type="com.design.oa.model.Incoming">
+    <id column="incoming_id" jdbcType="INTEGER" property="incomingId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="incoming_date" jdbcType="DATE" property="incomingDate" />
+    <result column="incoming_title" jdbcType="CHAR" property="incomingTitle" />
+    <result column="incoming_handle" jdbcType="CHAR" property="incomingHandle" />
+    <result column="incoming_depar" jdbcType="CHAR" property="incomingDepar" />
+    <result column="incoming_text_id" jdbcType="INTEGER" property="incomingTextId" />
+    <result column="incoming_state" jdbcType="INTEGER" property="incomingState" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    incoming_id, incoming.user_id, incoming_date, incoming_title, incoming_handle, incoming_depar,
+    incoming_text_id, incoming_state
+  </sql>
+
+  <select id="selectByTitleAndUrgAndCreater" resultMap="BaseResultMap">
+    select *
+    from incoming
+    where 1 =1
+    <if test="title!=null">
+      and incoming_title like '%' #{title} '%'
+    </if>
+    <if test="outgoingMessageUrgent!=-1">
+      and incoming_urgent = #{incominUrgent}
+    </if>
+    <if test="userId!=0">
+      and user_id = #{userId}
+    </if>
+    <if test="businessKey!=null">
+      and incoming_id = #{businessKey}
+    </if>
+  </select>
+
+  <select id="selectByUserId" parameterType="integer" resultMap="BaseResultMap">
+    select incoming.*,user.user_name as userName
+    from user,incoming
+    where incoming.user_id = user.user_id and incoming.user_id = #{userId}
+  </select>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />,user.user_name as userName,department_name as departmentName,text_name as
+    textTitle
+    from incoming,user,text,department
+    where incoming.user_id = user.user_id and incoming.incoming_text_id = text.text_id
+    and user.department_id = department.department_id
+    and incoming_id = #{incomingId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from incoming
+    where incoming_id = #{incomingId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.design.oa.model.Incoming" useGeneratedKeys="true" keyProperty="incomingId">
+    insert into incoming (incoming_id, user_id, incoming_date, 
+      incoming_title, incoming_handle, incoming_depar, 
+      incoming_text_id, incoming_state)
+    values (#{incomingId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{incomingDate,jdbcType=DATE}, 
+      #{incomingTitle,jdbcType=CHAR}, #{incomingHandle,jdbcType=CHAR}, #{incomingDepar,jdbcType=CHAR}, 
+      #{incomingTextId,jdbcType=INTEGER}, #{incomingState,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.design.oa.model.Incoming">
+    insert into incoming
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="incomingId != null">
+        incoming_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="incomingDate != null">
+        incoming_date,
+      </if>
+      <if test="incomingTitle != null">
+        incoming_title,
+      </if>
+      <if test="incomingHandle != null">
+        incoming_handle,
+      </if>
+      <if test="incomingDepar != null">
+        incoming_depar,
+      </if>
+      <if test="incomingTextId != null">
+        incoming_text_id,
+      </if>
+      <if test="incomingState != null">
+        incoming_state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="incomingId != null">
+        #{incomingId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="incomingDate != null">
+        #{incomingDate,jdbcType=DATE},
+      </if>
+      <if test="incomingTitle != null">
+        #{incomingTitle,jdbcType=CHAR},
+      </if>
+      <if test="incomingHandle != null">
+        #{incomingHandle,jdbcType=CHAR},
+      </if>
+      <if test="incomingDepar != null">
+        #{incomingDepar,jdbcType=CHAR},
+      </if>
+      <if test="incomingTextId != null">
+        #{incomingTextId,jdbcType=INTEGER},
+      </if>
+      <if test="incomingState != null">
+        #{incomingState,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.design.oa.model.Incoming">
+    update incoming
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="incomingDate != null">
+        incoming_date = #{incomingDate,jdbcType=DATE},
+      </if>
+      <if test="incomingTitle != null">
+        incoming_title = #{incomingTitle,jdbcType=CHAR},
+      </if>
+      <if test="incomingHandle != null">
+        incoming_handle = #{incomingHandle,jdbcType=CHAR},
+      </if>
+      <if test="incomingDepar != null">
+        incoming_depar = #{incomingDepar,jdbcType=CHAR},
+      </if>
+      <if test="incomingTextId != null">
+        incoming_text_id = #{incomingTextId,jdbcType=INTEGER},
+      </if>
+      <if test="incomingState != null">
+        incoming_state = #{incomingState,jdbcType=INTEGER},
+      </if>
+    </set>
+    where incoming_id = #{incomingId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.design.oa.model.Incoming">
+    update incoming
+    set user_id = #{userId,jdbcType=INTEGER},
+      incoming_date = #{incomingDate,jdbcType=DATE},
+      incoming_title = #{incomingTitle,jdbcType=CHAR},
+      incoming_handle = #{incomingHandle,jdbcType=CHAR},
+      incoming_depar = #{incomingDepar,jdbcType=CHAR},
+      incoming_text_id = #{incomingTextId,jdbcType=INTEGER},
+      incoming_state = #{incomingState,jdbcType=INTEGER}
+    where incoming_id = #{incomingId,jdbcType=INTEGER}
+  </update>
+  <update id="updateStateById" parameterType="com.design.oa.model.Incoming">
+    update incoming
+    set incoming_state = #{incomingState}
+    where incoming_id = #{incomingId}
+  </update>
+</mapper>

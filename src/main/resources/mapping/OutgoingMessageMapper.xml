@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.design.oa.dao.OutgoingMessageMapper">
+    <resultMap id="BaseResultMap" type="com.design.oa.model.OutgoingMessage">
+        <id column="outgoing_message_id" jdbcType="INTEGER" property="outgoingMessageId"/>
+        <result column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="outgoing_message_date" jdbcType="DATE" property="outgoingMessageDate"/>
+        <result column="outgoing_message_secret" jdbcType="CHAR" property="outgoingMessageSecret"/>
+        <result column="outgoing_message_urgent" jdbcType="CHAR" property="outgoingMessageUrgent"/>
+        <result column="outgoing_message_number" jdbcType="INTEGER" property="outgoingMessageNumber"/>
+        <result column="outgoing_message_dep" jdbcType="CHAR" property="outgoingMessageDep"/>
+        <result column="outgoing_message_title" jdbcType="CHAR" property="outgoingMessageTitle"/>
+        <result column="outgoing_message_scope" jdbcType="CHAR" property="outgoingMessageScope"/>
+        <result column="outgoing_message_handle" jdbcType="CHAR" property="outgoingMessageHandle"/>
+        <result column="outgoing_message_countersign" jdbcType="CHAR" property="outgoingMessageCountersign"/>
+        <result column="outgoing_message_issue" jdbcType="CHAR" property="outgoingMessageIssue"/>
+        <result column="outgoing_message_text_id" jdbcType="CHAR" property="outgoingMessageTextId"/>
+        <result column="outgoing_message_state" jdbcType="INTEGER" property="outgoingMessageState"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    outgoing_message_id,outgoing_message.user_id, outgoing_message_date, outgoing_message_secret, outgoing_message_urgent,
+    outgoing_message_number, outgoing_message_dep, outgoing_message_title, outgoing_message_scope, 
+    outgoing_message_handle, outgoing_message_countersign, outgoing_message_issue, outgoing_message_text_id, 
+    outgoing_message_state
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>,user.user_name as userName,department_name as departmentName,text_name as
+        textTitle
+        from outgoing_message,user,department,text
+        where outgoing_message.user_id = user.user_id and outgoing_message.outgoing_message_scope =
+        department.department_id
+        and outgoing_message.outgoing_message_text_id = text.text_id and
+        outgoing_message_id = #{outgoingMessageId,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectByUserId" parameterType="integer" resultMap="BaseResultMap">
+    select outgoing_message.*,user.user_name as userName
+    from user,outgoing_message
+    where outgoing_message.user_id = user.user_id and outgoing_message.user_id = #{userId}
+  </select>
+
+    <select id="selectByTitleAndUrgAndCreater" resultMap="BaseResultMap">
+        select *
+        from outgoing_message
+        where 1 =1
+        <if test="title!=null">
+            and outgoing_message_title like '%' #{title} '%'
+        </if>
+        <if test="outgoingMessageUrgent!=-1">
+            and outgoing_message_urgent = #{outgoingMessageUrgent}
+        </if>
+        <if test="userId!=0">
+            and user_id = #{userId}
+        </if>
+        <if test="businessKey!=null">
+            and outgoing_message_id = #{businessKey}
+        </if>
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from outgoing_message
+    where outgoing_message_id = #{outgoingMessageId,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.design.oa.model.OutgoingMessage" useGeneratedKeys="true"
+            keyProperty="outgoingMessageId">
+    insert into outgoing_message (outgoing_message_id, user_id, outgoing_message_date, 
+      outgoing_message_secret, outgoing_message_urgent, 
+      outgoing_message_number, outgoing_message_dep, 
+      outgoing_message_title, outgoing_message_scope, outgoing_message_handle, 
+      outgoing_message_countersign, outgoing_message_issue, 
+      outgoing_message_text_id, outgoing_message_state
+      )
+    values (#{outgoingMessageId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{outgoingMessageDate,jdbcType=DATE}, 
+      #{outgoingMessageSecret,jdbcType=CHAR}, #{outgoingMessageUrgent,jdbcType=CHAR}, 
+      #{outgoingMessageNumber,jdbcType=INTEGER}, #{outgoingMessageDep,jdbcType=CHAR}, 
+      #{outgoingMessageTitle,jdbcType=CHAR}, #{outgoingMessageScope,jdbcType=CHAR}, #{outgoingMessageHandle,jdbcType=CHAR}, 
+      #{outgoingMessageCountersign,jdbcType=CHAR}, #{outgoingMessageIssue,jdbcType=CHAR}, 
+      #{outgoingMessageTextId,jdbcType=CHAR}, #{outgoingMessageState,jdbcType=INTEGER}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.design.oa.model.OutgoingMessage">
+        insert into outgoing_message
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="outgoingMessageId != null">
+                outgoing_message_id,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="outgoingMessageDate != null">
+                outgoing_message_date,
+            </if>
+            <if test="outgoingMessageSecret != null">
+                outgoing_message_secret,
+            </if>
+            <if test="outgoingMessageUrgent != null">
+                outgoing_message_urgent,
+            </if>
+            <if test="outgoingMessageNumber != null">
+                outgoing_message_number,
+            </if>
+            <if test="outgoingMessageDep != null">
+                outgoing_message_dep,
+            </if>
+            <if test="outgoingMessageTitle != null">
+                outgoing_message_title,
+            </if>
+            <if test="outgoingMessageScope != null">
+                outgoing_message_scope,
+            </if>
+            <if test="outgoingMessageHandle != null">
+                outgoing_message_handle,
+            </if>
+            <if test="outgoingMessageCountersign != null">
+                outgoing_message_countersign,
+            </if>
+            <if test="outgoingMessageIssue != null">
+                outgoing_message_issue,
+            </if>
+            <if test="outgoingMessageTextId != null">
+                outgoing_message_text_id,
+            </if>
+            <if test="outgoingMessageState != null">
+                outgoing_message_state,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="outgoingMessageId != null">
+                #{outgoingMessageId,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="outgoingMessageDate != null">
+                #{outgoingMessageDate,jdbcType=DATE},
+            </if>
+            <if test="outgoingMessageSecret != null">
+                #{outgoingMessageSecret,jdbcType=CHAR},
+            </if>
+            <if test="outgoingMessageUrgent != null">
+                #{outgoingMessageUrgent,jdbcType=CHAR},
+            </if>
+            <if test="outgoingMessageNumber != null">
+                #{outgoingMessageNumber,jdbcType=INTEGER},
+            </if>
+            <if test="outgoingMessageDep != null">
+                #{outgoingMessageDep,jdbcType=CHAR},
+            </if>
+            <if test="outgoingMessageTitle != null">
+                #{outgoingMessageTitle,jdbcType=CHAR},
+            </if>
+            <if test="outgoingMessageScope != null">
+                #{outgoingMessageScope,jdbcType=CHAR},
+            </if>
+            <if test="outgoingMessageHandle != null">
+                #{outgoingMessageHandle,jdbcType=CHAR},
+            </if>
+            <if test="outgoingMessageCountersign != null">
+                #{outgoingMessageCountersign,jdbcType=CHAR},
+            </if>
+            <if test="outgoingMessageIssue != null">
+                #{outgoingMessageIssue,jdbcType=CHAR},
+            </if>
+            <if test="outgoingMessageTextId != null">
+                #{outgoingMessageTextId,jdbcType=CHAR},
+            </if>
+            <if test="outgoingMessageState != null">
+                #{outgoingMessageState,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.design.oa.model.OutgoingMessage">
+        update outgoing_message
+        <set>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="outgoingMessageDate != null">
+                outgoing_message_date = #{outgoingMessageDate,jdbcType=DATE},
+            </if>
+            <if test="outgoingMessageSecret != null">
+                outgoing_message_secret = #{outgoingMessageSecret,jdbcType=CHAR},
+            </if>
+            <if test="outgoingMessageUrgent != null">
+                outgoing_message_urgent = #{outgoingMessageUrgent,jdbcType=CHAR},
+            </if>
+            <if test="outgoingMessageNumber != null">
+                outgoing_message_number = #{outgoingMessageNumber,jdbcType=INTEGER},
+            </if>
+            <if test="outgoingMessageDep != null">
+                outgoing_message_dep = #{outgoingMessageDep,jdbcType=CHAR},
+            </if>
+            <if test="outgoingMessageTitle != null">
+                outgoing_message_title = #{outgoingMessageTitle,jdbcType=CHAR},
+            </if>
+            <if test="outgoingMessageScope != null">
+                outgoing_message_scope = #{outgoingMessageScope,jdbcType=CHAR},
+            </if>
+            <if test="outgoingMessageHandle != null">
+                outgoing_message_handle = #{outgoingMessageHandle,jdbcType=CHAR},
+            </if>
+            <if test="outgoingMessageCountersign != null">
+                outgoing_message_countersign = #{outgoingMessageCountersign,jdbcType=CHAR},
+            </if>
+            <if test="outgoingMessageIssue != null">
+                outgoing_message_issue = #{outgoingMessageIssue,jdbcType=CHAR},
+            </if>
+            <if test="outgoingMessageTextId != null">
+                outgoing_message_text_id = #{outgoingMessageTextId,jdbcType=CHAR},
+            </if>
+            <if test="outgoingMessageState != null">
+                outgoing_message_state = #{outgoingMessageState,jdbcType=INTEGER},
+            </if>
+        </set>
+        where outgoing_message_id = #{outgoingMessageId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.design.oa.model.OutgoingMessage">
+    update outgoing_message
+    set user_id = #{userId,jdbcType=INTEGER},
+      outgoing_message_date = #{outgoingMessageDate,jdbcType=DATE},
+      outgoing_message_secret = #{outgoingMessageSecret,jdbcType=CHAR},
+      outgoing_message_urgent = #{outgoingMessageUrgent,jdbcType=CHAR},
+      outgoing_message_number = #{outgoingMessageNumber,jdbcType=INTEGER},
+      outgoing_message_dep = #{outgoingMessageDep,jdbcType=CHAR},
+      outgoing_message_title = #{outgoingMessageTitle,jdbcType=CHAR},
+      outgoing_message_scope = #{outgoingMessageScope,jdbcType=CHAR},
+      outgoing_message_handle = #{outgoingMessageHandle,jdbcType=CHAR},
+      outgoing_message_countersign = #{outgoingMessageCountersign,jdbcType=CHAR},
+      outgoing_message_issue = #{outgoingMessageIssue,jdbcType=CHAR},
+      outgoing_message_text_id = #{outgoingMessageTextId,jdbcType=CHAR},
+      outgoing_message_state = #{outgoingMessageState,jdbcType=INTEGER}
+    where outgoing_message_id = #{outgoingMessageId,jdbcType=INTEGER}
+  </update>
+</mapper>

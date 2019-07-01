@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.design.oa.dao.AttendanceRecordMapper">
+  <resultMap id="BaseResultMap" type="com.design.oa.model.AttendanceRecord">
+    <id column="att_record_id" jdbcType="INTEGER" property="attRecordId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="att_date" jdbcType="DATE" property="attDate" />
+    <result column="att_work_time" jdbcType="TIMESTAMP" property="attWorkTime" />
+    <result column="att_off_time" jdbcType="TIMESTAMP" property="attOffTime" />
+    <result column="att_state" jdbcType="CHAR" property="attState" />
+    <result column="att_repair_reason" jdbcType="CHAR" property="attRepairReason" />
+    <result column="att_repair_type" jdbcType="CHAR" property="attRepairType" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    att_record_id, user_id, att_date, att_work_time, att_off_time, att_state, att_repair_reason, 
+    att_repair_type
+  </sql>
+
+  <select id="selectByUserAndDate" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from attendance_record
+    where user_id = #{userId} and att_date = #{attDate}
+  </select>
+
+  <select id="getLateDays" resultType = "int">
+    select
+    count(*)
+    from attendance_record
+    where user_id = #{userId} and att_date BETWEEN (select DATE_ADD(#{curDate},interval -day(#{curDate})+1 day))
+    and (select last_day(#{curDate})) and att_state = "迟到"
+  </select>
+
+  <select id="getLeaveEarlyDays" resultType = "int">
+    select
+    count(*)
+    from attendance_record
+    where user_id = #{userId} and att_date BETWEEN (select DATE_ADD(#{curDate},interval -day(#{curDate})+1 day))
+    and (select last_day(#{curDate})) and att_state = "早退"
+  </select>
+
+  <select id="getLeaveDays" resultType = "int">
+    select
+    count(*)
+    from attendance_record
+    where user_id = #{userId} and att_date BETWEEN (select DATE_ADD(#{curDate},interval -day(#{curDate})+1 day))
+    and (select last_day(#{curDate})) and att_state = "请假"
+  </select>
+
+  <select id="selectRecordsByUser" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from attendance_record
+    where user_id = #{userId}
+  </select>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from attendance_record
+    where att_record_id = #{attRecordId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from attendance_record
+    where att_record_id = #{attRecordId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.design.oa.model.AttendanceRecord">
+    insert into attendance_record (att_record_id, user_id, att_date, 
+      att_work_time, att_off_time, att_state, 
+      att_repair_reason, att_repair_type)
+    values (#{attRecordId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{attDate,jdbcType=DATE}, 
+      #{attWorkTime,jdbcType=TIMESTAMP}, #{attOffTime,jdbcType=TIMESTAMP}, #{attState,jdbcType=CHAR}, 
+      #{attRepairReason,jdbcType=CHAR}, #{attRepairType,jdbcType=CHAR})
+  </insert>
+
+
+  <insert id="insertSelective" parameterType="com.design.oa.model.AttendanceRecord">
+    insert into attendance_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="attRecordId != null">
+        att_record_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="attDate != null">
+        att_date,
+      </if>
+      <if test="attWorkTime != null">
+        att_work_time,
+      </if>
+      <if test="attOffTime != null">
+        att_off_time,
+      </if>
+      <if test="attState != null">
+        att_state,
+      </if>
+      <if test="attRepairReason != null">
+        att_repair_reason,
+      </if>
+      <if test="attRepairType != null">
+        att_repair_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="attRecordId != null">
+        #{attRecordId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="attDate != null">
+        #{attDate,jdbcType=DATE},
+      </if>
+      <if test="attWorkTime != null">
+        #{attWorkTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attOffTime != null">
+        #{attOffTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attState != null">
+        #{attState,jdbcType=CHAR},
+      </if>
+      <if test="attRepairReason != null">
+        #{attRepairReason,jdbcType=CHAR},
+      </if>
+      <if test="attRepairType != null">
+        #{attRepairType,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.design.oa.model.AttendanceRecord">
+    update attendance_record
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="attDate != null">
+        att_date = #{attDate,jdbcType=DATE},
+      </if>
+      <if test="attWorkTime != null">
+        att_work_time = #{attWorkTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attOffTime != null">
+        att_off_time = #{attOffTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attState != null">
+        att_state = #{attState,jdbcType=CHAR},
+      </if>
+      <if test="attRepairReason != null">
+        att_repair_reason = #{attRepairReason,jdbcType=CHAR},
+      </if>
+      <if test="attRepairType != null">
+        att_repair_type = #{attRepairType,jdbcType=CHAR},
+      </if>
+    </set>
+    where att_record_id = #{attRecordId,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateByUserAndDate" parameterType="com.design.oa.model.AttendanceRecord">
+    update attendance_record
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="attDate != null">
+        att_date = #{attDate,jdbcType=DATE},
+      </if>
+      <if test="attWorkTime != null">
+        att_work_time = #{attWorkTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attOffTime != null">
+        att_off_time = #{attOffTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attState != null">
+        att_state = #{attState,jdbcType=CHAR},
+      </if>
+      <if test="attRepairReason != null">
+        att_repair_reason = #{attRepairReason,jdbcType=CHAR},
+      </if>
+      <if test="attRepairType != null">
+        att_repair_type = #{attRepairType,jdbcType=CHAR},
+      </if>
+    </set>
+   where user_id = #{userId,jdbcType=INTEGER} and att_date = #{attDate}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.design.oa.model.AttendanceRecord">
+    update attendance_record
+    set user_id = #{userId,jdbcType=INTEGER},
+      att_date = #{attDate,jdbcType=DATE},
+      att_work_time = #{attWorkTime,jdbcType=TIMESTAMP},
+      att_off_time = #{attOffTime,jdbcType=TIMESTAMP},
+      att_state = #{attState,jdbcType=CHAR},
+      att_repair_reason = #{attRepairReason,jdbcType=CHAR},
+      att_repair_type = #{attRepairType,jdbcType=CHAR}
+    where att_record_id = #{attRecordId,jdbcType=INTEGER}
+  </update>
+</mapper>
